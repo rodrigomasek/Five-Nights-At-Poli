@@ -8,9 +8,17 @@ public class EnemyMovement : MonoBehaviour
 
     public float detectionRadius = 5f;
     public LayerMask playerLayer;
+    public LayerMask wallLayer;
+
+    public float tiempoDeBusqueda = 3f;
 
     private Rigidbody2D rb;
     private Transform objetivoActual;
+    private Transform jugadorDetectado;
+
+    private Vector2 ultimaPosicionJugador;
+    private bool buscandoJugador = false;
+    private float tiempoBusqueda = 0f;
 
     void Start()
     {
@@ -20,36 +28,123 @@ public class EnemyMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-        Vector2 direccion = (objetivoActual.position - transform.position).normalized;
+        DetectarJugador();
 
-        rb.MovePosition(rb.position + direccion * speed * Time.fixedDeltaTime);
+        Vector2 direccion;
 
-        if (Vector2.Distance(transform.position, objetivoActual.position) < 0.1f)
+        // El profesor está viendo al jugador
+        if (jugadorDetectado != null)
         {
-            if (objetivoActual == patrolPoint1)
+            buscandoJugador = false;
+
+            ultimaPosicionJugador = jugadorDetectado.position;
+
+            direccion = (
+                (Vector2)jugadorDetectado.position - rb.position
+            ).normalized;
+        }
+
+        // El profesor perdió al jugador y va a su última posición
+        else if (buscandoJugador)
+        {
+            direccion = (
+                ultimaPosicionJugador - rb.position
+            ).normalized;
+
+            float distancia = Vector2.Distance(
+                rb.position,
+                ultimaPosicionJugador
+            );
+
+            if (distancia < 0.2f)
             {
-                objetivoActual = patrolPoint2;
-            }
-            else
-            {
-                objetivoActual = patrolPoint1;
+                tiempoBusqueda -= Time.fixedDeltaTime;
+
+                if (tiempoBusqueda <= 0f)
+                {
+                    buscandoJugador = false;
+                }
             }
         }
 
-        DetectarJugador();
+        // El profesor está patrullando
+        else
+        {
+            direccion = (
+                (Vector2)objetivoActual.position - rb.position
+            ).normalized;
+
+            if (Vector2.Distance(
+                rb.position,
+                objetivoActual.position
+            ) < 0.1f)
+            {
+                if (objetivoActual == patrolPoint1)
+                {
+                    objetivoActual = patrolPoint2;
+                }
+                else
+                {
+                    objetivoActual = patrolPoint1;
+                }
+            }
+        }
+
+        Vector2 nuevaPosicion =
+            rb.position + direccion * speed * Time.fixedDeltaTime;
+
+        rb.MovePosition(nuevaPosicion);
     }
 
     void DetectarJugador()
     {
         Collider2D jugador = Physics2D.OverlapCircle(
-            transform.position,
+            rb.position,
             detectionRadius,
             playerLayer
         );
 
         if (jugador != null)
         {
-            Debug.Log("¡Jugador detectado!");
+            RaycastHit2D obstaculo = Physics2D.Linecast(
+                rb.position,
+                jugador.transform.position,
+                wallLayer
+            );
+
+            // No hay pared entre el profesor y el jugador
+            if (obstaculo.collider == null)
+            {
+                jugadorDetectado = jugador.transform;
+
+                ultimaPosicionJugador = jugador.transform.position;
+
+                Debug.Log("¡Jugador visible!");
+            }
+            else
+            {
+                // Si estaba persiguiendo y ahora una pared lo tapa
+                if (jugadorDetectado != null)
+                {
+                    jugadorDetectado = null;
+                    buscandoJugador = true;
+                    tiempoBusqueda = tiempoDeBusqueda;
+
+                    Debug.Log("¡Perdí de vista al jugador!");
+                }
+            }
+        }
+        else
+        {
+            // El jugador salió del radio de detección
+            if (jugadorDetectado != null)
+            {
+                jugadorDetectado = null;
+                buscandoJugador = true;
+                tiempoBusqueda = tiempoDeBusqueda;
+
+                Debug.Log("¡Perdí de vista al jugador!");
+            }
         }
     }
 }
