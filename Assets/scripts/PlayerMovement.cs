@@ -39,6 +39,24 @@ public class PlayerMovement : MonoBehaviour
     private float temporizadorRuido;
 
     // =========================
+    // LLAVE
+    // =========================
+
+    private bool tieneLlave = false;
+
+    public void ObtenerLlave()
+    {
+        tieneLlave = true;
+
+        Debug.Log("El jugador tiene la llave.");
+    }
+
+    public bool TieneLlave()
+    {
+        return tieneLlave;
+    }
+
+    // =========================
     // ESCONDITE
     // =========================
 
@@ -60,13 +78,11 @@ public class PlayerMovement : MonoBehaviour
             movimiento = Vector2.zero;
             corriendo = false;
 
-            // Guardamos las restricciones normales
             restriccionesNormales = rb.constraints;
 
-            // Bloqueamos completamente al jugador
-            rb.constraints = RigidbodyConstraints2D.FreezeAll;
+            rb.constraints =
+                RigidbodyConstraints2D.FreezeAll;
 
-            // Evitamos que conserve velocidad
             rb.linearVelocity = Vector2.zero;
             rb.angularVelocity = 0f;
 
@@ -74,8 +90,8 @@ public class PlayerMovement : MonoBehaviour
         }
         else
         {
-            // Restauramos las restricciones anteriores
-            rb.constraints = restriccionesNormales;
+            rb.constraints =
+                restriccionesNormales;
 
             rb.linearVelocity = Vector2.zero;
             rb.angularVelocity = 0f;
@@ -138,20 +154,25 @@ public class PlayerMovement : MonoBehaviour
 
         if (agachado)
         {
-            intervaloActual = intervaloRuidoAgachado;
+            intervaloActual =
+                intervaloRuidoAgachado;
         }
         else if (corriendo)
         {
-            intervaloActual = intervaloRuidoCorriendo;
+            intervaloActual =
+                intervaloRuidoCorriendo;
         }
         else
         {
-            intervaloActual = intervaloRuidoCaminando;
+            intervaloActual =
+                intervaloRuidoCaminando;
         }
 
         if (temporizadorRuido <= 0f)
         {
-            temporizadorRuido = intervaloActual;
+            temporizadorRuido =
+                intervaloActual;
+
             return true;
         }
 
@@ -164,16 +185,23 @@ public class PlayerMovement : MonoBehaviour
 
     void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
-        boxCollider = GetComponent<BoxCollider2D>();
+        rb =
+            GetComponent<Rigidbody2D>();
 
-        staminaActual = staminaMaxima;
+        boxCollider =
+            GetComponent<BoxCollider2D>();
 
-        alturaColliderNormal = boxCollider.size.y;
+        staminaActual =
+            staminaMaxima;
 
-        temporizadorRuido = 0f;
+        alturaColliderNormal =
+            boxCollider.size.y;
 
-        restriccionesNormales = rb.constraints;
+        temporizadorRuido =
+            0f;
+
+        restriccionesNormales =
+            rb.constraints;
     }
 
     // =========================
@@ -182,7 +210,6 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        // Si está escondido, no procesa movimiento
         if (escondido)
         {
             movimiento = Vector2.zero;
@@ -221,34 +248,41 @@ public class PlayerMovement : MonoBehaviour
             movimiento.x -= 1;
         }
 
-        movimiento = movimiento.normalized;
+        movimiento =
+            movimiento.normalized;
 
         // =========================
         // AGACHARSE
         // =========================
 
-        agachado = Keyboard.current.ctrlKey.isPressed;
+        agachado =
+            Keyboard.current.ctrlKey.isPressed;
 
         if (agachado)
         {
-            boxCollider.size = new Vector2(
-                boxCollider.size.x,
-                alturaColliderAgachado
-            );
+            boxCollider.size =
+                new Vector2(
+                    boxCollider.size.x,
+                    alturaColliderAgachado
+                );
 
-            boxCollider.offset = new Vector2(
-                0f,
-                -(alturaColliderNormal - alturaColliderAgachado) / 2f
-            );
+            boxCollider.offset =
+                new Vector2(
+                    0f,
+                    -(alturaColliderNormal -
+                    alturaColliderAgachado) / 2f
+                );
         }
         else
         {
-            boxCollider.size = new Vector2(
-                boxCollider.size.x,
-                alturaColliderNormal
-            );
+            boxCollider.size =
+                new Vector2(
+                    boxCollider.size.x,
+                    alturaColliderNormal
+                );
 
-            boxCollider.offset = Vector2.zero;
+            boxCollider.offset =
+                Vector2.zero;
         }
 
         // =========================
@@ -260,12 +294,14 @@ public class PlayerMovement : MonoBehaviour
             movimiento != Vector2.zero &&
             !agachado;
 
-        if (quiereCorrer && staminaActual > 0)
+        if (quiereCorrer &&
+            staminaActual > 0)
         {
             corriendo = true;
 
             staminaActual -=
-                consumoStamina * Time.deltaTime;
+                consumoStamina *
+                Time.deltaTime;
 
             if (staminaActual <= 0)
             {
@@ -278,11 +314,14 @@ public class PlayerMovement : MonoBehaviour
             corriendo = false;
 
             staminaActual +=
-                recuperacionStamina * Time.deltaTime;
+                recuperacionStamina *
+                Time.deltaTime;
 
-            if (staminaActual > staminaMaxima)
+            if (staminaActual >
+                staminaMaxima)
             {
-                staminaActual = staminaMaxima;
+                staminaActual =
+                    staminaMaxima;
             }
         }
     }
@@ -300,15 +339,18 @@ public class PlayerMovement : MonoBehaviour
 
         if (agachado)
         {
-            velocidadActual = velocidadAgachado;
+            velocidadActual =
+                velocidadAgachado;
         }
         else if (corriendo)
         {
-            velocidadActual = velocidadCorrer;
+            velocidadActual =
+                velocidadCorrer;
         }
         else
         {
-            velocidadActual = velocidadCaminar;
+            velocidadActual =
+                velocidadCaminar;
         }
 
         rb.MovePosition(
