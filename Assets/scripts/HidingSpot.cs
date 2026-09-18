@@ -7,20 +7,18 @@ public class HidingSpot : MonoBehaviour
     [Header("Interacción")]
     public Key teclaEsconderse = Key.E;
 
+    [Header("Detección del profesor")]
+    public CircleCollider2D zonaRevision;
+
     private bool jugadorCerca = false;
     private PlayerMovement jugador;
 
-    private EnemyMovement profesor;
-
     void Start()
     {
-        profesor = FindFirstObjectByType<EnemyMovement>();
-
-        if (profesor == null)
+        if (zonaRevision == null)
         {
-            Debug.LogWarning(
-                "No se encontró ningún EnemyMovement en la escena."
-            );
+            zonaRevision =
+                GetComponent<CircleCollider2D>();
         }
     }
 
@@ -31,32 +29,34 @@ public class HidingSpot : MonoBehaviour
 
         if (Keyboard.current[teclaEsconderse].wasPressedThisFrame)
         {
-            // ==============================
-            // SALIR DEL ESCONDITE
-            // ==============================
+            // Buscamos al profesor.
+            EnemyMovement profesor =
+                FindFirstObjectByType<EnemyMovement>();
 
-            if (jugador.EstaEscondido())
+            // Si el jugador NO está escondido,
+            // estamos intentando entrar.
+            if (!jugador.EstaEscondido())
             {
+                if (profesor != null)
+                {
+                    // IMPORTANTE:
+                    // Esto se hace ANTES de esconder al jugador.
+                    profesor.JugadorEntroAlEscondite();
+                }
+
+                jugador.AlternarEscondido();
+            }
+            else
+            {
+                // Si ya estaba escondido,
+                // simplemente sale.
                 jugador.AlternarEscondido();
 
                 if (profesor != null)
                 {
                     profesor.JugadorSalioDelEscondite();
                 }
-
-                return;
             }
-
-            // ==============================
-            // ENTRAR AL ESCONDITE
-            // ==============================
-
-            if (profesor != null)
-            {
-                profesor.JugadorEntroAlEscondite();
-            }
-
-            jugador.AlternarEscondido();
         }
     }
 
@@ -65,7 +65,8 @@ public class HidingSpot : MonoBehaviour
         if (!other.CompareTag("Player"))
             return;
 
-        jugador = other.GetComponent<PlayerMovement>();
+        jugador =
+            other.GetComponent<PlayerMovement>();
 
         if (jugador != null)
         {
@@ -83,17 +84,18 @@ public class HidingSpot : MonoBehaviour
             return;
 
         jugadorCerca = false;
-
-        // Si está escondido mantenemos la referencia
-        // para que pueda salir con E.
-        if (jugador != null &&
-            !jugador.EstaEscondido())
-        {
-            jugador = null;
-        }
+        jugador = null;
 
         Debug.Log(
             "Jugador salió del área del escondite."
         );
+    }
+
+    public bool HayJugadorEscondido()
+    {
+        if (jugador == null)
+            return false;
+
+        return jugador.EstaEscondido();
     }
 }

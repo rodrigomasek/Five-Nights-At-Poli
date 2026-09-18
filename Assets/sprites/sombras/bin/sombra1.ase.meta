@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: ed3a4acb1585974a189f209887a4c886
+guid: 2739a541ab3da80e7ad85fda07b0ba00
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -125,9 +125,9 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
   animatedSpriteImportData:
-  - name: borde_esquina
+  - name: sombra1
     originalName: 
-    pivot: {x: 0.4074074, y: 0}
+    pivot: {x: 0.5, y: -1.909091}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     customData: 
@@ -135,9 +135,9 @@ ScriptedImporter:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 27
-      height: 27
-    spriteID: d663615bf50e4e99293c372188dabb62
+      width: 32
+      height: 11
+    spriteID: 45ac10f4f447baa849af83f9f73e55f6
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -151,25 +151,25 @@ ScriptedImporter:
   asepriteLayers:
   - layerIndex: 0
     uuid:
-      value0: 3305794921
+      value0: 1878116357
       value1: 0
       value2: 0
       value3: 0
     guid: 0
-    name: borde_esquina
+    name: sombra1
     layerFlags: 0
     layerType: 0
     blendMode: 0
     cells:
-    - name: borde_esquina
+    - name: sombra1
       frameIndex: 0
       additiveSortOrder: 0
       cellRect:
-        x: 5
-        y: 0
-        width: 27
-        height: 27
-      spriteId: d663615bf50e4e99293c372188dabb62
+        x: 0
+        y: 21
+        width: 32
+        height: 11
+      spriteId: 45ac10f4f447baa849af83f9f73e55f6
     linkedCells: []
     tileCells: []
     tileSetIndex: 0
@@ -178,5 +178,5 @@ ScriptedImporter:
   platformSettings: []
   generatePhysicsShape: 0
   secondarySpriteTextures: []
-  previousTextureSize: {x: 64, y: 64}
+  previousTextureSize: {x: 64, y: 32}
   canvasSize: {x: 32, y: 32}

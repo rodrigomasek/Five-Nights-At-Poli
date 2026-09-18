@@ -1,7 +1,6 @@
 
 using UnityEngine;
 using UnityEngine.AI;
-using UnityEngine.SceneManagement;
 
 public class EnemyMovement : MonoBehaviour
 {
@@ -22,6 +21,9 @@ public class EnemyMovement : MonoBehaviour
     public float tiempoBusqueda = 5f;
     public float distanciaLlegadaUltimaPosicion = 0.3f;
 
+    [Header("Captura")]
+    public float distanciaParaAtraparlo = 0.8f;
+
     [Header("Oido")]
     public float distanciaEscucha = 10f;
     public float distanciaEscuchaCorriendo = 15f;
@@ -30,12 +32,19 @@ public class EnemyMovement : MonoBehaviour
     [Header("Investigacion de ruido")]
     public float tiempoInvestigandoRuido = 4f;
 
-    [Header("Escondite")]
-    public float distanciaParaAtraparlo = 0.8f;
+    [Header("Revision de escondites")]
+    [Range(0f, 100f)]
+    public float probabilidadRevisarEscondite = 30f;
+
+    public float distanciaRevisionEscondite = 2f;
+
 
     private NavMeshAgent agent;
+
     private Collider2D colliderProfesor;
     private Collider2D colliderJugador;
+
+    private GameManager gameManager;
 
     private Transform jugador;
     private PlayerMovement playerMovement;
@@ -51,8 +60,15 @@ public class EnemyMovement : MonoBehaviour
     private bool buscando = false;
     private bool investigandoRuido = false;
 
-    // Indica si el profesor vio al jugador entrar al escondite
+    // El profesor vio al jugador entrar al escondite.
     private bool vioEntrarAlEscondite = false;
+
+    // Escondite que el profesor decidió revisar.
+    private HidingSpot esconditeRevisando;
+
+    // Último escondite detectado cerca del profesor.
+    private HidingSpot esconditeCercano;
+
 
     // =========================================
     // INICIO
@@ -61,7 +77,19 @@ public class EnemyMovement : MonoBehaviour
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
-        colliderProfesor = GetComponent<Collider2D>();
+
+        colliderProfesor =
+            GetComponent<Collider2D>();
+
+        gameManager =
+            FindFirstObjectByType<GameManager>();
+
+        if (gameManager == null)
+        {
+            Debug.LogError(
+                "No se encontró ningún GameManager en la escena."
+            );
+        }
 
         agent.updateRotation = false;
         agent.updateUpAxis = false;
@@ -74,7 +102,8 @@ public class EnemyMovement : MonoBehaviour
 
         if (playerObject != null)
         {
-            jugador = playerObject.transform;
+            jugador =
+                playerObject.transform;
 
             playerMovement =
                 playerObject.GetComponent<PlayerMovement>();
@@ -98,7 +127,8 @@ public class EnemyMovement : MonoBehaviour
 
         if (patrolPoint1 != null)
         {
-            puntoPatrullaActual = patrolPoint1;
+            puntoPatrullaActual =
+                patrolPoint1;
 
             agent.SetDestination(
                 puntoPatrullaActual.position
@@ -112,6 +142,7 @@ public class EnemyMovement : MonoBehaviour
         }
     }
 
+
     // =========================================
     // UPDATE
     // =========================================
@@ -124,13 +155,26 @@ public class EnemyMovement : MonoBehaviour
             return;
         }
 
+
+        // =====================================
+        // ESTÁ REVISANDO UN ESCONDITE
+        // =====================================
+
+        if (esconditeRevisando != null)
+        {
+            RevisarEsconditeEnDestino();
+
+            return;
+        }
+
+
         // =====================================
         // JUGADOR ESCONDIDO
         // =====================================
 
         if (playerMovement.EstaEscondido())
         {
-            // Evitamos que el profesor empuje al jugador
+            // Evitamos que el profesor empuje al jugador.
             if (colliderProfesor != null &&
                 colliderJugador != null)
             {
@@ -141,8 +185,9 @@ public class EnemyMovement : MonoBehaviour
                 );
             }
 
+
             // =================================
-            // EL PROFESOR VIO ENTRAR AL JUGADOR
+            // EL PROFESOR VIO AL JUGADOR ENTRAR
             // =================================
 
             if (vioEntrarAlEscondite)
@@ -157,7 +202,6 @@ public class EnemyMovement : MonoBehaviour
                         jugador.position
                     );
 
-                // El profesor llegó al escondite
                 if (distancia <= distanciaParaAtraparlo)
                 {
                     AtraparJugador();
@@ -166,8 +210,9 @@ public class EnemyMovement : MonoBehaviour
                 return;
             }
 
+
             // =================================
-            // NO VIO ENTRAR AL JUGADOR
+            // NO LO VIO ENTRAR
             // =================================
 
             persiguiendo = false;
@@ -177,10 +222,20 @@ public class EnemyMovement : MonoBehaviour
             tiempoSinVerJugador = 0f;
             tiempoInvestigando = 0f;
 
+
+            // =================================
+            // IMPORTANTE:
+            // AUNQUE EL JUGADOR ESTÉ ESCONDIDO,
+            // EL PROFESOR PUEDE REVISAR ESCONDITE.
+            // =================================
+
+            RevisarEsconditeCercano();
+
             Patrullar();
 
             return;
         }
+
 
         // =====================================
         // JUGADOR NO ESTÁ ESCONDIDO
@@ -196,12 +251,14 @@ public class EnemyMovement : MonoBehaviour
             );
         }
 
+
         // =====================================
         // VISION
         // =====================================
 
         bool puedeVerJugador =
             EstaViendoJugador();
+
 
         if (puedeVerJugador)
         {
@@ -218,8 +275,27 @@ public class EnemyMovement : MonoBehaviour
                 jugador.position
             );
 
+
+            // =================================
+            // CAPTURA DURANTE PERSECUCIÓN
+            // =================================
+
+            float distancia =
+                Vector2.Distance(
+                    transform.position,
+                    jugador.position
+                );
+
+            if (distancia <= distanciaParaAtraparlo)
+            {
+                AtraparJugador();
+
+                return;
+            }
+
             return;
         }
+
 
         // =====================================
         // RUIDO
@@ -230,8 +306,9 @@ public class EnemyMovement : MonoBehaviour
             EscucharRuido();
         }
 
+
         // =====================================
-        // PERSECUCION → BUSQUEDA
+        // PERSECUCIÓN → BÚSQUEDA
         // =====================================
 
         if (persiguiendo)
@@ -247,6 +324,7 @@ public class EnemyMovement : MonoBehaviour
 
             return;
         }
+
 
         // =====================================
         // INVESTIGAR RUIDO
@@ -273,6 +351,7 @@ public class EnemyMovement : MonoBehaviour
             return;
         }
 
+
         // =====================================
         // BUSCAR JUGADOR
         // =====================================
@@ -298,6 +377,14 @@ public class EnemyMovement : MonoBehaviour
             return;
         }
 
+
+        // =====================================
+        // REVISAR ESCONDITE CERCANO
+        // =====================================
+
+        RevisarEsconditeCercano();
+
+
         // =====================================
         // PATRULLAR
         // =====================================
@@ -305,13 +392,17 @@ public class EnemyMovement : MonoBehaviour
         Patrullar();
     }
 
+
     // =========================================
     // JUGADOR ENTRA AL ESCONDITE
     // =========================================
 
     public void JugadorEntroAlEscondite()
     {
-        // Comprobamos si el profesor lo estaba viendo
+        // IMPORTANTE:
+        // HidingSpot llama a esta función
+        // ANTES de esconder al jugador.
+
         if (EstaViendoJugador())
         {
             vioEntrarAlEscondite = true;
@@ -323,12 +414,15 @@ public class EnemyMovement : MonoBehaviour
             buscando = false;
             investigandoRuido = false;
 
+            esconditeRevisando = null;
+            esconditeCercano = null;
+
             agent.SetDestination(
-                ultimaPosicionJugador
+                jugador.position
             );
 
             Debug.Log(
-                "El profesor vio al jugador entrar al escondite."
+                "¡El profesor vio al jugador entrar al escondite!"
             );
         }
         else
@@ -336,10 +430,11 @@ public class EnemyMovement : MonoBehaviour
             vioEntrarAlEscondite = false;
 
             Debug.Log(
-                "El profesor no vio al jugador entrar al escondite."
+                "El profesor NO vio al jugador entrar al escondite."
             );
         }
     }
+
 
     // =========================================
     // JUGADOR SALE DEL ESCONDITE
@@ -359,10 +454,158 @@ public class EnemyMovement : MonoBehaviour
             );
         }
 
+        esconditeRevisando = null;
+        esconditeCercano = null;
+
         Debug.Log(
             "El jugador salió del escondite."
         );
     }
+
+
+    // =========================================
+    // DETECTAR ESCONDITE CERCANO
+    // =========================================
+
+    void RevisarEsconditeCercano()
+    {
+        Collider2D[] colliders =
+            Physics2D.OverlapCircleAll(
+                transform.position,
+                distanciaRevisionEscondite
+            );
+
+        HidingSpot esconditeEncontrado = null;
+
+
+        foreach (Collider2D collider in colliders)
+        {
+            HidingSpot escondite =
+                collider.GetComponent<HidingSpot>();
+
+            if (escondite != null)
+            {
+                esconditeEncontrado =
+                    escondite;
+
+                break;
+            }
+        }
+
+
+        // No hay escondite cerca.
+        if (esconditeEncontrado == null)
+        {
+            esconditeCercano = null;
+
+            return;
+        }
+
+
+        // Ya pasó por este escondite.
+        if (esconditeCercano ==
+            esconditeEncontrado)
+        {
+            return;
+        }
+
+
+        esconditeCercano =
+            esconditeEncontrado;
+
+
+        Debug.Log(
+            "El profesor pasó cerca de un escondite."
+        );
+
+
+        // =====================================
+        // PROBABILIDAD
+        // =====================================
+
+        float resultado =
+            Random.Range(
+                0f,
+                100f
+            );
+
+
+        if (resultado <=
+            probabilidadRevisarEscondite)
+        {
+            Debug.Log(
+                "El profesor decidió revisar el escondite."
+            );
+
+            esconditeRevisando =
+                esconditeEncontrado;
+
+            agent.SetDestination(
+                esconditeRevisando.transform.position
+            );
+
+            return;
+        }
+
+
+        Debug.Log(
+            "El profesor decidió no revisar el escondite."
+        );
+    }
+
+
+    // =========================================
+    // LLEGÓ AL ESCONDITE
+    // =========================================
+
+    void RevisarEsconditeEnDestino()
+    {
+        if (agent.pathPending)
+            return;
+
+
+        if (agent.remainingDistance >
+            distanciaLlegadaUltimaPosicion)
+        {
+            return;
+        }
+
+
+        Debug.Log(
+            "El profesor llegó al escondite para revisarlo."
+        );
+
+
+        // =====================================
+        // ¿ESTÁ EL JUGADOR EN ESTE ESCONDITE?
+        // =====================================
+
+        if (esconditeRevisando.HayJugadorEscondido())
+        {
+            Debug.Log(
+                "¡El profesor encontró al jugador escondido!"
+            );
+
+            AtraparJugador();
+
+            return;
+        }
+
+
+        // =====================================
+        // ESCONDITE VACÍO
+        // =====================================
+
+        Debug.Log(
+            "El profesor revisó el escondite y estaba vacío."
+        );
+
+        esconditeRevisando = null;
+        esconditeCercano = null;
+
+        IrAlSiguientePuntoPatrulla();
+    }
+
 
     // =========================================
     // ¿ESTÁ VIENDO AL JUGADOR?
@@ -376,8 +619,12 @@ public class EnemyMovement : MonoBehaviour
             return false;
         }
 
+
         if (playerMovement.EstaEscondido())
+        {
             return false;
+        }
+
 
         Vector2 origen =
             transform.position;
@@ -392,7 +639,9 @@ public class EnemyMovement : MonoBehaviour
                 jugador.position
             );
 
+
         float rangoActual;
+
 
         if (playerMovement.EstaAgachado())
         {
@@ -405,8 +654,12 @@ public class EnemyMovement : MonoBehaviour
                 distanciaVision;
         }
 
+
         if (distancia > rangoActual)
+        {
             return false;
+        }
+
 
         RaycastHit2D impacto =
             Physics2D.Raycast(
@@ -416,8 +669,10 @@ public class EnemyMovement : MonoBehaviour
                 capaParedes
             );
 
+
         return impacto.collider == null;
     }
+
 
     // =========================================
     // ATRAPAR AL JUGADOR
@@ -429,10 +684,19 @@ public class EnemyMovement : MonoBehaviour
             "¡El profesor atrapó al jugador!"
         );
 
-        SceneManager.LoadScene(
-            SceneManager.GetActiveScene().buildIndex
-        );
+
+        if (gameManager != null)
+        {
+            gameManager.GameOver();
+        }
+        else
+        {
+            Debug.LogError(
+                "No se encontró el GameManager."
+            );
+        }
     }
+
 
     // =========================================
     // ESCUCHAR RUIDO
@@ -441,7 +705,10 @@ public class EnemyMovement : MonoBehaviour
     void EscucharRuido()
     {
         if (playerMovement.EstaEscondido())
+        {
             return;
+        }
+
 
         float distancia =
             Vector2.Distance(
@@ -449,7 +716,9 @@ public class EnemyMovement : MonoBehaviour
                 jugador.position
             );
 
+
         float rangoEscucha;
+
 
         if (playerMovement.EstaAgachado())
         {
@@ -467,8 +736,12 @@ public class EnemyMovement : MonoBehaviour
                 distanciaEscucha;
         }
 
+
         if (distancia > rangoEscucha)
+        {
             return;
+        }
+
 
         ultimaPosicionJugador =
             jugador.position;
@@ -480,10 +753,12 @@ public class EnemyMovement : MonoBehaviour
 
         tiempoInvestigando = 0f;
 
+
         agent.SetDestination(
             ultimaPosicionJugador
         );
     }
+
 
     // =========================================
     // PATRULLA
@@ -492,7 +767,10 @@ public class EnemyMovement : MonoBehaviour
     void Patrullar()
     {
         if (puntoPatrullaActual == null)
+        {
             return;
+        }
+
 
         if (!agent.pathPending &&
             agent.remainingDistance <=
@@ -501,6 +779,7 @@ public class EnemyMovement : MonoBehaviour
             IrAlSiguientePuntoPatrulla();
         }
     }
+
 
     // =========================================
     // CAMBIAR PUNTO DE PATRULLA
@@ -514,6 +793,7 @@ public class EnemyMovement : MonoBehaviour
             return;
         }
 
+
         if (puntoPatrullaActual ==
             patrolPoint1)
         {
@@ -526,10 +806,12 @@ public class EnemyMovement : MonoBehaviour
                 patrolPoint1;
         }
 
+
         agent.SetDestination(
             puntoPatrullaActual.position
         );
     }
+
 
     // =========================================
     // GIZMOS
@@ -538,7 +820,10 @@ public class EnemyMovement : MonoBehaviour
     void OnDrawGizmos()
     {
         if (jugador == null)
+        {
             return;
+        }
+
 
         Gizmos.DrawLine(
             transform.position,
