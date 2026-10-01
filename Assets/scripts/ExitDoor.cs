@@ -7,6 +7,9 @@ public class ExitDoor : MonoBehaviour
     [Header("Interacción")]
     public Key teclaAbrir = Key.E;
 
+    [Header("Game Manager")]
+    public GameManager gameManager;
+
     private bool jugadorCerca = false;
     private PlayerMovement jugador;
 
@@ -56,8 +59,16 @@ public class ExitDoor : MonoBehaviour
                 "¡Tenés la llave! ¡Escapaste!"
             );
 
-            // Por ahora solamente mostramos
-            // que la victoria funciona.
+            if (gameManager != null)
+            {
+                gameManager.Victoria();
+            }
+            else
+            {
+                Debug.LogError(
+                    "No asignaste el GameManager en la puerta."
+                );
+            }
         }
         else
         {
