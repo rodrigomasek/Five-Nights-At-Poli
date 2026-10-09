@@ -17,7 +17,7 @@ public class EnemyMovement : MonoBehaviour
     public float distanciaVisionAgachado = 5f;
     public LayerMask capaParedes;
 
-    [Header("Persecución")]
+    [Header("Persecucion")]
     public float tiempoBusqueda = 5f;
     public float distanciaLlegadaUltimaPosicion = 0.3f;
 
@@ -35,54 +35,43 @@ public class EnemyMovement : MonoBehaviour
     [Header("Revision de escondites")]
     [Range(0f, 100f)]
     public float probabilidadRevisarEscondite = 30f;
-
     public float distanciaRevisionEscondite = 2f;
 
+    [Header("Camaras de seguridad")]
+    public float tiempoBusquedaCamara = 5f;
 
     private NavMeshAgent agent;
-
     private Collider2D colliderProfesor;
     private Collider2D colliderJugador;
-
     private GameManager gameManager;
 
     private Transform jugador;
     private PlayerMovement playerMovement;
-
     private Transform puntoPatrullaActual;
 
     private Vector3 ultimaPosicionJugador;
 
     private float tiempoSinVerJugador;
     private float tiempoInvestigando;
+    private float tiempoBusquedaCamaraActual;
 
     private bool persiguiendo = false;
     private bool buscando = false;
     private bool investigandoRuido = false;
+    private bool investigandoCamara = false;
+    private bool juegoTerminado = false;
 
-    // El profesor vio al jugador entrar al escondite.
     private bool vioEntrarAlEscondite = false;
 
-    // Escondite que el profesor decidió revisar.
     private HidingSpot esconditeRevisando;
-
-    // Último escondite detectado cerca del profesor.
     private HidingSpot esconditeCercano;
-
-
-    // =========================================
-    // INICIO
-    // =========================================
 
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
+        colliderProfesor = GetComponent<Collider2D>();
 
-        colliderProfesor =
-            GetComponent<Collider2D>();
-
-        gameManager =
-            FindFirstObjectByType<GameManager>();
+        gameManager = FindAnyObjectByType<GameManager>();
 
         if (gameManager == null)
         {
@@ -93,7 +82,6 @@ public class EnemyMovement : MonoBehaviour
 
         agent.updateRotation = false;
         agent.updateUpAxis = false;
-
         agent.speed = velocidad;
         agent.stoppingDistance = 0.1f;
 
@@ -102,12 +90,9 @@ public class EnemyMovement : MonoBehaviour
 
         if (playerObject != null)
         {
-            jugador =
-                playerObject.transform;
-
+            jugador = playerObject.transform;
             playerMovement =
                 playerObject.GetComponent<PlayerMovement>();
-
             colliderJugador =
                 playerObject.GetComponent<Collider2D>();
         }
@@ -116,7 +101,6 @@ public class EnemyMovement : MonoBehaviour
             Debug.LogError(
                 "No se encontró un objeto con el Tag 'Player'."
             );
-
             return;
         }
 
@@ -127,12 +111,8 @@ public class EnemyMovement : MonoBehaviour
 
         if (patrolPoint1 != null)
         {
-            puntoPatrullaActual =
-                patrolPoint1;
-
-            agent.SetDestination(
-                puntoPatrullaActual.position
-            );
+            puntoPatrullaActual = patrolPoint1;
+            agent.SetDestination(puntoPatrullaActual.position);
         }
         else
         {
@@ -142,31 +122,31 @@ public class EnemyMovement : MonoBehaviour
         }
     }
 
-
-    // =========================================
-    // UPDATE
-    // =========================================
-
     void Update()
     {
-        if (jugador == null ||
+        if (juegoTerminado ||
+            jugador == null ||
             playerMovement == null)
         {
             return;
         }
 
+        // El Game Over detiene la IA.
+        if (gameManager != null &&
+            Time.timeScale == 0f)
+        {
+            return;
+        }
 
         // =====================================
-        // ESTÁ REVISANDO UN ESCONDITE
+        // REVISAR ESCONDITE
         // =====================================
 
         if (esconditeRevisando != null)
         {
             RevisarEsconditeEnDestino();
-
             return;
         }
-
 
         // =====================================
         // JUGADOR ESCONDIDO
@@ -174,33 +154,16 @@ public class EnemyMovement : MonoBehaviour
 
         if (playerMovement.EstaEscondido())
         {
-            // Evitamos que el profesor empuje al jugador.
-            if (colliderProfesor != null &&
-                colliderJugador != null)
-            {
-                Physics2D.IgnoreCollision(
-                    colliderProfesor,
-                    colliderJugador,
-                    true
-                );
-            }
-
-
-            // =================================
-            // EL PROFESOR VIO AL JUGADOR ENTRAR
-            // =================================
+            IgnorarColisionJugador(true);
 
             if (vioEntrarAlEscondite)
             {
-                agent.SetDestination(
+                agent.SetDestination(jugador.position);
+
+                float distancia = Vector2.Distance(
+                    transform.position,
                     jugador.position
                 );
-
-                float distancia =
-                    Vector2.Distance(
-                        transform.position,
-                        jugador.position
-                    );
 
                 if (distancia <= distanciaParaAtraparlo)
                 {
@@ -210,92 +173,46 @@ public class EnemyMovement : MonoBehaviour
                 return;
             }
 
-
-            // =================================
-            // NO LO VIO ENTRAR
-            // =================================
-
             persiguiendo = false;
             buscando = false;
             investigandoRuido = false;
-
-            tiempoSinVerJugador = 0f;
-            tiempoInvestigando = 0f;
-
-
-            // =================================
-            // IMPORTANTE:
-            // AUNQUE EL JUGADOR ESTÉ ESCONDIDO,
-            // EL PROFESOR PUEDE REVISAR ESCONDITE.
-            // =================================
+            investigandoCamara = false;
 
             RevisarEsconditeCercano();
-
             Patrullar();
-
             return;
         }
 
+        IgnorarColisionJugador(false);
 
         // =====================================
-        // JUGADOR NO ESTÁ ESCONDIDO
+        // VISION DIRECTA: MAXIMA PRIORIDAD
         // =====================================
 
-        if (colliderProfesor != null &&
-            colliderJugador != null)
-        {
-            Physics2D.IgnoreCollision(
-                colliderProfesor,
-                colliderJugador,
-                false
-            );
-        }
-
-
-        // =====================================
-        // VISION
-        // =====================================
-
-        bool puedeVerJugador =
-            EstaViendoJugador();
-
-
-        if (puedeVerJugador)
+        if (EstaViendoJugador())
         {
             persiguiendo = true;
             buscando = false;
             investigandoRuido = false;
+            investigandoCamara = false;
 
             tiempoSinVerJugador = 0f;
+            ultimaPosicionJugador = jugador.position;
 
-            ultimaPosicionJugador =
-                jugador.position;
+            agent.SetDestination(jugador.position);
 
-            agent.SetDestination(
+            float distancia = Vector2.Distance(
+                transform.position,
                 jugador.position
             );
-
-
-            // =================================
-            // CAPTURA DURANTE PERSECUCIÓN
-            // =================================
-
-            float distancia =
-                Vector2.Distance(
-                    transform.position,
-                    jugador.position
-                );
 
             if (distancia <= distanciaParaAtraparlo)
             {
                 AtraparJugador();
-
-                return;
             }
 
             return;
         }
-
 
         // =====================================
         // RUIDO
@@ -306,25 +223,42 @@ public class EnemyMovement : MonoBehaviour
             EscucharRuido();
         }
 
-
         // =====================================
-        // PERSECUCIÓN → BÚSQUEDA
+        // FIN DE PERSECUCION DIRECTA
         // =====================================
 
         if (persiguiendo)
         {
             persiguiendo = false;
             buscando = true;
-
             tiempoSinVerJugador = 0f;
 
-            agent.SetDestination(
-                ultimaPosicionJugador
-            );
-
+            agent.SetDestination(ultimaPosicionJugador);
             return;
         }
 
+        // =====================================
+        // INVESTIGAR DETECCION DE CAMARA
+        // =====================================
+
+        if (investigandoCamara)
+        {
+            tiempoBusquedaCamaraActual += Time.deltaTime;
+
+            if (!agent.pathPending &&
+                agent.remainingDistance <=
+                distanciaLlegadaUltimaPosicion)
+            {
+                if (tiempoBusquedaCamaraActual >=
+                    tiempoBusquedaCamara)
+                {
+                    investigandoCamara = false;
+                    IrAlSiguientePuntoPatrulla();
+                }
+            }
+
+            return;
+        }
 
         // =====================================
         // INVESTIGAR RUIDO
@@ -332,8 +266,7 @@ public class EnemyMovement : MonoBehaviour
 
         if (investigandoRuido)
         {
-            tiempoInvestigando +=
-                Time.deltaTime;
+            tiempoInvestigando += Time.deltaTime;
 
             if (!agent.pathPending &&
                 agent.remainingDistance <=
@@ -343,7 +276,6 @@ public class EnemyMovement : MonoBehaviour
                     tiempoInvestigandoRuido)
                 {
                     investigandoRuido = false;
-
                     IrAlSiguientePuntoPatrulla();
                 }
             }
@@ -351,39 +283,33 @@ public class EnemyMovement : MonoBehaviour
             return;
         }
 
-
         // =====================================
-        // BUSCAR JUGADOR
+        // BUSCAR ULTIMA POSICION VISTA
         // =====================================
 
         if (buscando)
         {
-            tiempoSinVerJugador +=
-                Time.deltaTime;
+            tiempoSinVerJugador += Time.deltaTime;
 
             if (!agent.pathPending &&
                 agent.remainingDistance <=
                 distanciaLlegadaUltimaPosicion)
             {
-                if (tiempoSinVerJugador >=
-                    tiempoBusqueda)
+                if (tiempoSinVerJugador >= tiempoBusqueda)
                 {
                     buscando = false;
-
                     IrAlSiguientePuntoPatrulla();
                 }
             }
 
             return;
         }
-
 
         // =====================================
         // REVISAR ESCONDITE CERCANO
         // =====================================
 
         RevisarEsconditeCercano();
-
 
         // =====================================
         // PATRULLAR
@@ -392,34 +318,100 @@ public class EnemyMovement : MonoBehaviour
         Patrullar();
     }
 
+    // =========================================
+    // CAMARA DETECTO AL JUGADOR
+    // =========================================
+
+    public void DetectadoPorCamara(Vector3 posicionDetectada)
+    {
+        if (juegoTerminado)
+            return;
+
+        if (jugador == null || playerMovement == null)
+            return;
+
+        // Si el jugador está escondido, no aceptamos
+        // nuevas detecciones de cámaras.
+        if (playerMovement.EstaEscondido())
+            return;
+
+        // La visión directa del profesor tiene prioridad.
+        if (persiguiendo || EstaViendoJugador())
+            return;
+
+        // No interrumpimos una revisión de escondite.
+        if (esconditeRevisando != null)
+            return;
+
+        // Si ya está investigando por cámara, actualizamos
+        // la posición sin reiniciar constantemente el tiempo.
+        bool nuevaInvestigacion = !investigandoCamara;
+
+        ultimaPosicionJugador = posicionDetectada;
+
+        persiguiendo = false;
+        buscando = false;
+        investigandoRuido = false;
+        investigandoCamara = true;
+
+        if (nuevaInvestigacion)
+        {
+            tiempoBusquedaCamaraActual = 0f;
+
+            Debug.Log(
+                "El profesor recibió una detección de cámara."
+            );
+        }
+
+        // No recalculamos el destino en cada fotograma.
+        if (nuevaInvestigacion ||
+            Vector3.Distance(
+                agent.destination,
+                posicionDetectada
+            ) > 1f)
+        {
+            agent.SetDestination(posicionDetectada);
+        }
+    }
 
     // =========================================
-    // JUGADOR ENTRA AL ESCONDITE
+    // COLISION CON JUGADOR
+    // =========================================
+
+    void IgnorarColisionJugador(bool ignorar)
+    {
+        if (colliderProfesor != null &&
+            colliderJugador != null)
+        {
+            Physics2D.IgnoreCollision(
+                colliderProfesor,
+                colliderJugador,
+                ignorar
+            );
+        }
+    }
+
+    // =========================================
+    // ENTRA AL ESCONDITE
     // =========================================
 
     public void JugadorEntroAlEscondite()
     {
-        // IMPORTANTE:
-        // HidingSpot llama a esta función
-        // ANTES de esconder al jugador.
-
         if (EstaViendoJugador())
         {
             vioEntrarAlEscondite = true;
 
-            ultimaPosicionJugador =
-                jugador.position;
+            ultimaPosicionJugador = jugador.position;
 
             persiguiendo = false;
             buscando = false;
             investigandoRuido = false;
+            investigandoCamara = false;
 
             esconditeRevisando = null;
             esconditeCercano = null;
 
-            agent.SetDestination(
-                jugador.position
-            );
+            agent.SetDestination(jugador.position);
 
             Debug.Log(
                 "¡El profesor vio al jugador entrar al escondite!"
@@ -430,41 +422,29 @@ public class EnemyMovement : MonoBehaviour
             vioEntrarAlEscondite = false;
 
             Debug.Log(
-                "El profesor NO vio al jugador entrar al escondite."
+                "El profesor no vio al jugador entrar al escondite."
             );
         }
     }
 
-
     // =========================================
-    // JUGADOR SALE DEL ESCONDITE
+    // SALE DEL ESCONDITE
     // =========================================
 
     public void JugadorSalioDelEscondite()
     {
         vioEntrarAlEscondite = false;
 
-        if (colliderProfesor != null &&
-            colliderJugador != null)
-        {
-            Physics2D.IgnoreCollision(
-                colliderProfesor,
-                colliderJugador,
-                false
-            );
-        }
+        IgnorarColisionJugador(false);
 
         esconditeRevisando = null;
         esconditeCercano = null;
 
-        Debug.Log(
-            "El jugador salió del escondite."
-        );
+        Debug.Log("El jugador salió del escondite.");
     }
 
-
     // =========================================
-    // DETECTAR ESCONDITE CERCANO
+    // BUSCAR ESCONDITE CERCANO
     // =========================================
 
     void RevisarEsconditeCercano()
@@ -477,7 +457,6 @@ public class EnemyMovement : MonoBehaviour
 
         HidingSpot esconditeEncontrado = null;
 
-
         foreach (Collider2D collider in colliders)
         {
             HidingSpot escondite =
@@ -485,77 +464,50 @@ public class EnemyMovement : MonoBehaviour
 
             if (escondite != null)
             {
-                esconditeEncontrado =
-                    escondite;
-
+                esconditeEncontrado = escondite;
                 break;
             }
         }
 
-
-        // No hay escondite cerca.
         if (esconditeEncontrado == null)
         {
             esconditeCercano = null;
-
             return;
         }
 
-
-        // Ya pasó por este escondite.
-        if (esconditeCercano ==
-            esconditeEncontrado)
-        {
+        if (esconditeCercano == esconditeEncontrado)
             return;
-        }
 
-
-        esconditeCercano =
-            esconditeEncontrado;
-
+        esconditeCercano = esconditeEncontrado;
 
         Debug.Log(
             "El profesor pasó cerca de un escondite."
         );
 
+        float resultado = Random.Range(0f, 100f);
 
-        // =====================================
-        // PROBABILIDAD
-        // =====================================
-
-        float resultado =
-            Random.Range(
-                0f,
-                100f
-            );
-
-
-        if (resultado <=
-            probabilidadRevisarEscondite)
+        if (resultado <= probabilidadRevisarEscondite)
         {
             Debug.Log(
                 "El profesor decidió revisar el escondite."
             );
 
-            esconditeRevisando =
-                esconditeEncontrado;
+            esconditeRevisando = esconditeEncontrado;
 
             agent.SetDestination(
                 esconditeRevisando.transform.position
             );
-
-            return;
         }
-
-
-        Debug.Log(
-            "El profesor decidió no revisar el escondite."
-        );
+        else
+        {
+            Debug.Log(
+                "El profesor decidió no revisar el escondite."
+            );
+        }
     }
 
-
     // =========================================
-    // LLEGÓ AL ESCONDITE
+    // REVISAR ESCONDITE EN DESTINO
     // =========================================
 
     void RevisarEsconditeEnDestino()
@@ -563,22 +515,15 @@ public class EnemyMovement : MonoBehaviour
         if (agent.pathPending)
             return;
 
-
         if (agent.remainingDistance >
             distanciaLlegadaUltimaPosicion)
         {
             return;
         }
 
-
         Debug.Log(
             "El profesor llegó al escondite para revisarlo."
         );
-
-
-        // =====================================
-        // ¿ESTÁ EL JUGADOR EN ESTE ESCONDITE?
-        // =====================================
 
         if (esconditeRevisando.HayJugadorEscondido())
         {
@@ -587,14 +532,8 @@ public class EnemyMovement : MonoBehaviour
             );
 
             AtraparJugador();
-
             return;
         }
-
-
-        // =====================================
-        // ESCONDITE VACÍO
-        // =====================================
 
         Debug.Log(
             "El profesor revisó el escondite y estaba vacío."
@@ -606,9 +545,8 @@ public class EnemyMovement : MonoBehaviour
         IrAlSiguientePuntoPatrulla();
     }
 
-
     // =========================================
-    // ¿ESTÁ VIENDO AL JUGADOR?
+    // VISION DIRECTA DEL PROFESOR
     // =========================================
 
     public bool EstaViendoJugador()
@@ -619,71 +557,48 @@ public class EnemyMovement : MonoBehaviour
             return false;
         }
 
-
         if (playerMovement.EstaEscondido())
-        {
             return false;
-        }
 
-
-        Vector2 origen =
-            transform.position;
+        Vector2 origen = transform.position;
 
         Vector2 direccion =
-            ((Vector2)jugador.position -
-            origen).normalized;
+            ((Vector2)jugador.position - origen).normalized;
 
-        float distancia =
-            Vector2.Distance(
-                origen,
-                jugador.position
-            );
+        float distancia = Vector2.Distance(
+            origen,
+            jugador.position
+        );
 
-
-        float rangoActual;
-
-
-        if (playerMovement.EstaAgachado())
-        {
-            rangoActual =
-                distanciaVisionAgachado;
-        }
-        else
-        {
-            rangoActual =
-                distanciaVision;
-        }
-
+        float rangoActual = playerMovement.EstaAgachado()
+            ? distanciaVisionAgachado
+            : distanciaVision;
 
         if (distancia > rangoActual)
-        {
             return false;
-        }
 
-
-        RaycastHit2D impacto =
-            Physics2D.Raycast(
-                origen,
-                direccion,
-                distancia,
-                capaParedes
-            );
-
+        RaycastHit2D impacto = Physics2D.Raycast(
+            origen,
+            direccion,
+            distancia,
+            capaParedes
+        );
 
         return impacto.collider == null;
     }
 
-
     // =========================================
-    // ATRAPAR AL JUGADOR
+    // GAME OVER
     // =========================================
 
     public void AtraparJugador()
     {
-        Debug.Log(
-            "¡El profesor atrapó al jugador!"
-        );
+        if (juegoTerminado)
+            return;
 
+        juegoTerminado = true;
+
+        Debug.Log("¡El profesor atrapó al jugador!");
 
         if (gameManager != null)
         {
@@ -697,7 +612,6 @@ public class EnemyMovement : MonoBehaviour
         }
     }
 
-
     // =========================================
     // ESCUCHAR RUIDO
     // =========================================
@@ -705,60 +619,43 @@ public class EnemyMovement : MonoBehaviour
     void EscucharRuido()
     {
         if (playerMovement.EstaEscondido())
-        {
             return;
-        }
 
-
-        float distancia =
-            Vector2.Distance(
-                transform.position,
-                jugador.position
-            );
-
+        float distancia = Vector2.Distance(
+            transform.position,
+            jugador.position
+        );
 
         float rangoEscucha;
 
-
         if (playerMovement.EstaAgachado())
         {
-            rangoEscucha =
-                distanciaEscuchaAgachado;
+            rangoEscucha = distanciaEscuchaAgachado;
         }
         else if (playerMovement.EstaCorriendo())
         {
-            rangoEscucha =
-                distanciaEscuchaCorriendo;
+            rangoEscucha = distanciaEscuchaCorriendo;
         }
         else
         {
-            rangoEscucha =
-                distanciaEscucha;
+            rangoEscucha = distanciaEscucha;
         }
-
 
         if (distancia > rangoEscucha)
-        {
             return;
-        }
 
-
-        ultimaPosicionJugador =
-            jugador.position;
+        ultimaPosicionJugador = jugador.position;
 
         investigandoRuido = true;
 
         persiguiendo = false;
         buscando = false;
+        investigandoCamara = false;
 
         tiempoInvestigando = 0f;
 
-
-        agent.SetDestination(
-            ultimaPosicionJugador
-        );
+        agent.SetDestination(ultimaPosicionJugador);
     }
-
 
     // =========================================
     // PATRULLA
@@ -767,22 +664,17 @@ public class EnemyMovement : MonoBehaviour
     void Patrullar()
     {
         if (puntoPatrullaActual == null)
-        {
             return;
-        }
-
 
         if (!agent.pathPending &&
-            agent.remainingDistance <=
-            distanciaLlegadaPatrulla)
+            agent.remainingDistance <= distanciaLlegadaPatrulla)
         {
             IrAlSiguientePuntoPatrulla();
         }
     }
 
-
     // =========================================
-    // CAMBIAR PUNTO DE PATRULLA
+    // SIGUIENTE PUNTO DE PATRULLA
     // =========================================
 
     void IrAlSiguientePuntoPatrulla()
@@ -793,25 +685,17 @@ public class EnemyMovement : MonoBehaviour
             return;
         }
 
-
-        if (puntoPatrullaActual ==
-            patrolPoint1)
+        if (puntoPatrullaActual == patrolPoint1)
         {
-            puntoPatrullaActual =
-                patrolPoint2;
+            puntoPatrullaActual = patrolPoint2;
         }
         else
         {
-            puntoPatrullaActual =
-                patrolPoint1;
+            puntoPatrullaActual = patrolPoint1;
         }
 
-
-        agent.SetDestination(
-            puntoPatrullaActual.position
-        );
+        agent.SetDestination(puntoPatrullaActual.position);
     }
-
 
     // =========================================
     // GIZMOS
@@ -820,10 +704,7 @@ public class EnemyMovement : MonoBehaviour
     void OnDrawGizmos()
     {
         if (jugador == null)
-        {
             return;
-        }
-
 
         Gizmos.DrawLine(
             transform.position,

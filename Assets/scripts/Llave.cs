@@ -7,6 +7,9 @@ public class KeyItem : MonoBehaviour
     [Header("Interacción")]
     public Key teclaRecoger = Key.E;
 
+    [Header("Objetivos")]
+    public ObjectiveManager objectiveManager;
+
     private bool jugadorCerca = false;
     private PlayerMovement jugador;
 
@@ -26,8 +29,7 @@ public class KeyItem : MonoBehaviour
         if (!other.CompareTag("Player"))
             return;
 
-        jugador =
-            other.GetComponent<PlayerMovement>();
+        jugador = other.GetComponent<PlayerMovement>();
 
         if (jugador != null)
         {
@@ -48,14 +50,26 @@ public class KeyItem : MonoBehaviour
         jugador = null;
     }
 
+
     void RecogerLlave()
     {
         jugador.ObtenerLlave();
 
-        Debug.Log(
-            "¡Llave recogida!"
-        );
+        Debug.Log("¡Llave recogida!");
+
+        if (objectiveManager != null)
+        {
+            objectiveManager.CompletarObjetivoLlave();
+        }
+        else
+        {
+            Debug.LogWarning(
+                "No asignaste el ObjectiveManager en la llave."
+            );
+        }
 
         gameObject.SetActive(false);
     }
+
+
 }
