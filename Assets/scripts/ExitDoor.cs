@@ -10,6 +10,9 @@ public class ExitDoor : MonoBehaviour
     [Header("Game Manager")]
     public GameManager gameManager;
 
+    [Header("Objetivos")]
+    public ObjectiveManager objectiveManager;
+
     private bool jugadorCerca = false;
     private PlayerMovement jugador;
 
@@ -29,8 +32,7 @@ public class ExitDoor : MonoBehaviour
         if (!other.CompareTag("Player"))
             return;
 
-        jugador =
-            other.GetComponent<PlayerMovement>();
+        jugador = other.GetComponent<PlayerMovement>();
 
         if (jugador != null)
         {
@@ -55,9 +57,18 @@ public class ExitDoor : MonoBehaviour
     {
         if (jugador.TieneLlave())
         {
-            Debug.Log(
-                "¡Tenés la llave! ¡Escapaste!"
-            );
+            Debug.Log("¡Tenés la llave! ¡Escapaste!");
+
+            if (objectiveManager != null)
+            {
+                objectiveManager.CompletarObjetivoEscape();
+            }
+            else
+            {
+                Debug.LogWarning(
+                    "No asignaste el ObjectiveManager en la puerta."
+                );
+            }
 
             if (gameManager != null)
             {
