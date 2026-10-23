@@ -67,5 +67,5 @@
         "*.sln": "*.csproj",
         "*.slnx": "*.csproj"
     },
-    "dotnet.defaultSolution": "Five-Nights-At-Poli.slnx"
+    "dotnet.defaultSolution": "Five Nights At Poli.slnx"
 }

@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: f4f24c26753ab3db8a5a63e741e29a48
+guid: 189a30db81daa5a008a25347d8567c43
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -127,7 +127,7 @@ ScriptedImporter:
   animatedSpriteImportData:
   - name: borde_con_continuacion
     originalName: 
-    pivot: {x: 0.5, y: 0}
+    pivot: {x: 0.5, y: -0.23076925}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     customData: 
@@ -136,8 +136,8 @@ ScriptedImporter:
       x: 4
       y: 4
       width: 32
-      height: 32
-    spriteID: 2a73f6d265d6ef60c9e6da6c62fd2aea
+      height: 26
+    spriteID: ddb0acc8ce65f2e8eb6316676c0839fe
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -166,10 +166,10 @@ ScriptedImporter:
       additiveSortOrder: 0
       cellRect:
         x: 0
-        y: 0
+        y: 6
         width: 32
-        height: 32
-      spriteId: 2a73f6d265d6ef60c9e6da6c62fd2aea
+        height: 26
+      spriteId: ddb0acc8ce65f2e8eb6316676c0839fe
     linkedCells: []
     tileCells: []
     tileSetIndex: 0
