@@ -2375,7 +2375,7 @@ SpriteRenderer:
   m_Size: {x: 0.32, y: 0.32}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_SpriteSortPoint: 0
   m_BlendShapeWeights: []
 --- !u!1 &1104841976
@@ -2607,7 +2607,7 @@ MonoBehaviour:
   distanciaEscuchaCorriendo: 15
   distanciaEscuchaAgachado: 2
   tiempoInvestigandoRuido: 4
-  probabilidadRevisarEscondite: 100
+  probabilidadRevisarEscondite: 11
   distanciaRevisionEscondite: 2
   tiempoBusquedaCamara: 5
 --- !u!61 &1200274433
