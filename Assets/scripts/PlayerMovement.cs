@@ -31,7 +31,8 @@ public class PlayerMovement : MonoBehaviour
 
     private Vector2 movimiento;
 
-    private float staminaActual;
+    public float staminaActual;
+    public float StaminaMaxima => staminaMaxima;
     private bool corriendo;
     private bool agachado;
 

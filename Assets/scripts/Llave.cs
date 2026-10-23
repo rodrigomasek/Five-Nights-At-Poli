@@ -10,12 +10,33 @@ public class KeyItem : MonoBehaviour
     [Header("Objetivos")]
     public ObjectiveManager objectiveManager;
 
+    [Header("Interfaz")]
+    public InteractionUI interactionUI;
+
     private bool jugadorCerca = false;
     private PlayerMovement jugador;
+
+    void Start()
+    {
+        if (interactionUI == null)
+        {
+            interactionUI = FindFirstObjectByType<InteractionUI>();
+        }
+    }
 
     void Update()
     {
         if (!jugadorCerca || jugador == null)
+            return;
+
+        if (interactionUI != null)
+        {
+            interactionUI.MostrarMensaje(
+                "Presioná E para recoger la llave"
+            );
+        }
+
+        if (Keyboard.current == null)
             return;
 
         if (Keyboard.current[teclaRecoger].wasPressedThisFrame)
@@ -35,6 +56,13 @@ public class KeyItem : MonoBehaviour
         {
             jugadorCerca = true;
 
+            if (interactionUI != null)
+            {
+                interactionUI.MostrarMensaje(
+                    "Presioná E para recoger la llave"
+                );
+            }
+
             Debug.Log(
                 "Estás cerca de la llave. Pulsa E para recogerla."
             );
@@ -48,14 +76,23 @@ public class KeyItem : MonoBehaviour
 
         jugadorCerca = false;
         jugador = null;
-    }
 
+        if (interactionUI != null)
+        {
+            interactionUI.OcultarMensaje();
+        }
+    }
 
     void RecogerLlave()
     {
         jugador.ObtenerLlave();
 
         Debug.Log("¡Llave recogida!");
+
+        if (interactionUI != null)
+        {
+            interactionUI.OcultarMensaje();
+        }
 
         if (objectiveManager != null)
         {
@@ -70,6 +107,4 @@ public class KeyItem : MonoBehaviour
 
         gameObject.SetActive(false);
     }
-
-
 }

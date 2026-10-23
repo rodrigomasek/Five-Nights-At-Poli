@@ -13,12 +13,44 @@ public class ExitDoor : MonoBehaviour
     [Header("Objetivos")]
     public ObjectiveManager objectiveManager;
 
+    [Header("Interfaz")]
+    public InteractionUI interactionUI;
+
     private bool jugadorCerca = false;
     private PlayerMovement jugador;
+
+    void Start()
+    {
+        if (interactionUI == null)
+        {
+            interactionUI = FindFirstObjectByType<InteractionUI>();
+        }
+    }
 
     void Update()
     {
         if (!jugadorCerca || jugador == null)
+            return;
+
+        // Actualizar el mensaje según tenga o no la llave.
+        if (interactionUI != null)
+        {
+            if (jugador.TieneLlave())
+            {
+                interactionUI.MostrarMensaje(
+                    "Presioná E para escapar"
+                );
+            }
+            else
+            {
+                interactionUI.MostrarMensaje(
+                    "Necesitás una llave para escapar"
+                );
+            }
+        }
+
+        // Comprobar que haya un teclado conectado.
+        if (Keyboard.current == null)
             return;
 
         if (Keyboard.current[teclaAbrir].wasPressedThisFrame)
@@ -39,7 +71,7 @@ public class ExitDoor : MonoBehaviour
             jugadorCerca = true;
 
             Debug.Log(
-                "Estás cerca de la puerta. Pulsa E para escapar."
+                "Jugador cerca de la puerta."
             );
         }
     }
@@ -51,6 +83,11 @@ public class ExitDoor : MonoBehaviour
 
         jugadorCerca = false;
         jugador = null;
+
+        if (interactionUI != null)
+        {
+            interactionUI.OcultarMensaje();
+        }
     }
 
     void IntentarAbrir()
@@ -58,6 +95,12 @@ public class ExitDoor : MonoBehaviour
         if (jugador.TieneLlave())
         {
             Debug.Log("¡Tenés la llave! ¡Escapaste!");
+
+            // Ocultar el mensaje antes de mostrar la victoria.
+            if (interactionUI != null)
+            {
+                interactionUI.OcultarMensaje();
+            }
 
             if (objectiveManager != null)
             {

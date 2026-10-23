@@ -7,6 +7,9 @@ public class HidingSpot : MonoBehaviour
     [Header("Interacción")]
     public Key teclaEsconderse = Key.E;
 
+    [Header("Interfaz")]
+    public InteractionUI interactionUI;
+
     [Header("Detección del profesor")]
     public CircleCollider2D zonaRevision;
 
@@ -17,8 +20,12 @@ public class HidingSpot : MonoBehaviour
     {
         if (zonaRevision == null)
         {
-            zonaRevision =
-                GetComponent<CircleCollider2D>();
+            zonaRevision = GetComponent<CircleCollider2D>();
+        }
+
+        if (interactionUI == null)
+        {
+            interactionUI = FindFirstObjectByType<InteractionUI>();
         }
     }
 
@@ -27,20 +34,34 @@ public class HidingSpot : MonoBehaviour
         if (!jugadorCerca || jugador == null)
             return;
 
+        if (interactionUI != null)
+        {
+            if (jugador.EstaEscondido())
+            {
+                interactionUI.MostrarMensaje(
+                    "Presioná E para salir del escondite"
+                );
+            }
+            else
+            {
+                interactionUI.MostrarMensaje(
+                    "Presioná E para esconderte"
+                );
+            }
+        }
+
+        if (Keyboard.current == null)
+            return;
+
         if (Keyboard.current[teclaEsconderse].wasPressedThisFrame)
         {
-            // Buscamos al profesor.
             EnemyMovement profesor =
                 FindFirstObjectByType<EnemyMovement>();
 
-            // Si el jugador NO está escondido,
-            // estamos intentando entrar.
             if (!jugador.EstaEscondido())
             {
                 if (profesor != null)
                 {
-                    // IMPORTANTE:
-                    // Esto se hace ANTES de esconder al jugador.
                     profesor.JugadorEntroAlEscondite();
                 }
 
@@ -48,8 +69,6 @@ public class HidingSpot : MonoBehaviour
             }
             else
             {
-                // Si ya estaba escondido,
-                // simplemente sale.
                 jugador.AlternarEscondido();
 
                 if (profesor != null)
@@ -65,16 +84,18 @@ public class HidingSpot : MonoBehaviour
         if (!other.CompareTag("Player"))
             return;
 
-        jugador =
-            other.GetComponent<PlayerMovement>();
+        jugador = other.GetComponent<PlayerMovement>();
 
         if (jugador != null)
         {
             jugadorCerca = true;
 
-            Debug.Log(
-                "Jugador cerca del escondite. Pulsa E para esconderte."
-            );
+            if (interactionUI != null)
+            {
+                interactionUI.MostrarMensaje(
+                    "Presioná E para esconderte"
+                );
+            }
         }
     }
 
@@ -86,9 +107,10 @@ public class HidingSpot : MonoBehaviour
         jugadorCerca = false;
         jugador = null;
 
-        Debug.Log(
-            "Jugador salió del área del escondite."
-        );
+        if (interactionUI != null)
+        {
+            interactionUI.OcultarMensaje();
+        }
     }
 
     public bool HayJugadorEscondido()
