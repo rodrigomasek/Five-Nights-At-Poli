@@ -1,4 +1,3 @@
-
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -12,6 +11,10 @@ public class ExitDoor : MonoBehaviour
 
     [Header("Objetivos")]
     public ObjectiveManager objectiveManager;
+
+    [Header("NPC")]
+    public NPCRescue npc01;
+    public NPCRescue npc02;
 
     [Header("Interfaz")]
     public InteractionUI interactionUI;
@@ -32,24 +35,37 @@ public class ExitDoor : MonoBehaviour
         if (!jugadorCerca || jugador == null)
             return;
 
-        // Actualizar el mensaje según tenga o no la llave.
         if (interactionUI != null)
         {
-            if (jugador.TieneLlave())
-            {
-                interactionUI.MostrarMensaje(
-                    "Presioná E para escapar"
-                );
-            }
-            else
+            int rescatados = 0;
+
+            if (npc01 != null && npc01.EstaLiberado())
+                rescatados++;
+
+            if (npc02 != null && npc02.EstaLiberado())
+                rescatados++;
+
+            if (!jugador.TieneLlave())
             {
                 interactionUI.MostrarMensaje(
                     "Necesitás una llave para escapar"
                 );
             }
+            else if (rescatados < 2)
+            {
+                interactionUI.MostrarMensaje(
+                    "Rescatá a los estudiantes (" +
+                    rescatados + "/2)"
+                );
+            }
+            else
+            {
+                interactionUI.MostrarMensaje(
+                    "Presioná E para escapar"
+                );
+            }
         }
 
-        // Comprobar que haya un teclado conectado.
         if (Keyboard.current == null)
             return;
 
@@ -70,9 +86,7 @@ public class ExitDoor : MonoBehaviour
         {
             jugadorCerca = true;
 
-            Debug.Log(
-                "Jugador cerca de la puerta."
-            );
+            Debug.Log("Jugador cerca de la puerta.");
         }
     }
 
@@ -92,42 +106,52 @@ public class ExitDoor : MonoBehaviour
 
     void IntentarAbrir()
     {
-        if (jugador.TieneLlave())
+        if (npc01 == null || npc02 == null)
         {
-            Debug.Log("¡Tenés la llave! ¡Escapaste!");
+            Debug.LogError(
+                "No asignaste los dos NPC en ExitDoor."
+            );
+            return;
+        }
 
-            // Ocultar el mensaje antes de mostrar la victoria.
-            if (interactionUI != null)
-            {
-                interactionUI.OcultarMensaje();
-            }
+        if (!jugador.TieneLlave())
+        {
+            Debug.Log("Necesitás una llave.");
+            return;
+        }
 
-            if (objectiveManager != null)
-            {
-                objectiveManager.CompletarObjetivoEscape();
-            }
-            else
-            {
-                Debug.LogWarning(
-                    "No asignaste el ObjectiveManager en la puerta."
-                );
-            }
+        if (!npc01.EstaLiberado() || !npc02.EstaLiberado())
+        {
+            Debug.Log("Todavía faltan estudiantes por rescatar.");
+            return;
+        }
 
-            if (gameManager != null)
-            {
-                gameManager.Victoria();
-            }
-            else
-            {
-                Debug.LogError(
-                    "No asignaste el GameManager en la puerta."
-                );
-            }
+        Debug.Log("¡Todos los requisitos cumplidos!");
+
+        if (interactionUI != null)
+        {
+            interactionUI.OcultarMensaje();
+        }
+
+        if (objectiveManager != null)
+        {
+            objectiveManager.CompletarObjetivoEscape();
         }
         else
         {
-            Debug.Log(
-                "La puerta está cerrada. Necesitás una llave."
+            Debug.LogWarning(
+                "No asignaste el ObjectiveManager."
+            );
+        }
+
+        if (gameManager != null)
+        {
+            gameManager.Victoria();
+        }
+        else
+        {
+            Debug.LogError(
+                "No asignaste el GameManager."
             );
         }
     }
