@@ -1,0 +1,36 @@
+{
+  "group_id": "31ecd34a-2b0b-41c0-9509-d0398f4bc43c",
+  "states": [
+    {
+      "character": {
+        "id": "8e02bf0a-e4fb-4342-a1bb-c2f602c81d5d",
+        "name": "Idle",
+        "prompt": "haz este personaje con mejor calidad y animado\n",
+        "size": {
+          "width": 256,
+          "height": 256
+        },
+        "template_id": "mannequin",
+        "directions": 8,
+        "view": "low top-down",
+        "created_at": "2026-08-28T13:10:23.921674+00:00"
+      },
+      "folder": "Idle",
+      "frames": {
+        "rotations": {
+          "south": "Idle/rotations/south.png",
+          "south-east": "Idle/rotations/south-east.png",
+          "east": "Idle/rotations/east.png",
+          "north-east": "Idle/rotations/north-east.png",
+          "north": "Idle/rotations/north.png",
+          "north-west": "Idle/rotations/north-west.png",
+          "west": "Idle/rotations/west.png",
+          "south-west": "Idle/rotations/south-west.png"
+        },
+        "animations": {}
+      }
+    }
+  ],
+  "export_version": "3.1",
+  "export_date": "2026-08-28T13:15:21.592649"
+}
