@@ -13,6 +13,8 @@ public class NPCRescue : MonoBehaviour
     [Header("Interfaz")]
     public InteractionUI interactionUI;
 
+    private ObjectiveManager objectiveManager;
+
     private bool jugadorCerca = false;
     private bool liberado = false;
     private float progresoLiberacion = 0f;
@@ -22,6 +24,16 @@ public class NPCRescue : MonoBehaviour
         if (interactionUI == null)
         {
             interactionUI = FindFirstObjectByType<InteractionUI>();
+        }
+
+        objectiveManager =
+            FindFirstObjectByType<ObjectiveManager>();
+
+        if (objectiveManager == null)
+        {
+            Debug.LogError(
+                "NPCRescue: no se encontró ObjectiveManager."
+            );
         }
     }
 
@@ -128,6 +140,12 @@ public class NPCRescue : MonoBehaviour
 
         progresoLiberacion = 0f;
         jugadorCerca = false;
+
+        // COMPLETAR OBJETIVO
+        if (objectiveManager != null)
+        {
+            objectiveManager.CompletarObjetivoRescatarNPC();
+        }
 
         if (interactionUI != null)
         {
