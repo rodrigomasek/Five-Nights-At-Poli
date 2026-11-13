@@ -1,151 +1,151 @@
 fileFormatVersion: 2
-guid: c49d7d0d9a9af2ea49a035af9cf6faa0
+guid: 5533952cc4abc7827994a6e896061ef1
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 7252501349195982266
-    second: walk_spritesheet_8dir_0
+      213: -8156884057348108579
+    second: guardapolvo2_spritesheet_8dir_0
   - first:
-      213: -6468894900889764192
-    second: walk_spritesheet_8dir_1
+      213: 3103264733057491128
+    second: guardapolvo2_spritesheet_8dir_1
   - first:
-      213: -1336473690848258651
-    second: walk_spritesheet_8dir_2
+      213: -1644467520522610723
+    second: guardapolvo2_spritesheet_8dir_2
   - first:
-      213: -3259719016011325955
-    second: walk_spritesheet_8dir_3
+      213: -5916879837160880779
+    second: guardapolvo2_spritesheet_8dir_3
   - first:
-      213: -1311536721142286358
-    second: walk_spritesheet_8dir_4
+      213: -3170359763435556865
+    second: guardapolvo2_spritesheet_8dir_4
   - first:
-      213: 4727827591865463294
-    second: walk_spritesheet_8dir_5
+      213: -3170147148764320364
+    second: guardapolvo2_spritesheet_8dir_5
   - first:
-      213: 7254292061421824056
-    second: walk_spritesheet_8dir_6
+      213: -7958842813133533935
+    second: guardapolvo2_spritesheet_8dir_6
   - first:
-      213: -6581211115246096358
-    second: walk_spritesheet_8dir_7
+      213: 8522855487179523990
+    second: guardapolvo2_spritesheet_8dir_7
   - first:
-      213: 1248336918652965643
-    second: walk_spritesheet_8dir_8
+      213: 1948685829804055089
+    second: guardapolvo2_spritesheet_8dir_8
   - first:
-      213: -413933210789253032
-    second: walk_spritesheet_8dir_9
+      213: 9163816908188147132
+    second: guardapolvo2_spritesheet_8dir_9
   - first:
-      213: 1750699860323132050
-    second: walk_spritesheet_8dir_10
+      213: -6898434158375193553
+    second: guardapolvo2_spritesheet_8dir_10
   - first:
-      213: 1716684980027897317
-    second: walk_spritesheet_8dir_11
+      213: 8888547722720387897
+    second: guardapolvo2_spritesheet_8dir_11
   - first:
-      213: 2407925332530208770
-    second: walk_spritesheet_8dir_12
+      213: 4700084008707568930
+    second: guardapolvo2_spritesheet_8dir_12
   - first:
-      213: 8671088600200828918
-    second: walk_spritesheet_8dir_13
+      213: -6062019093483708629
+    second: guardapolvo2_spritesheet_8dir_13
   - first:
-      213: 5142756381821677561
-    second: walk_spritesheet_8dir_14
+      213: 7287250568459419727
+    second: guardapolvo2_spritesheet_8dir_14
   - first:
-      213: 6411154729558470065
-    second: walk_spritesheet_8dir_15
+      213: 5025981385991208122
+    second: guardapolvo2_spritesheet_8dir_15
   - first:
-      213: -160725540380763595
-    second: walk_spritesheet_8dir_16
+      213: -8348652236569848134
+    second: guardapolvo2_spritesheet_8dir_16
   - first:
-      213: -4583570125718584241
-    second: walk_spritesheet_8dir_17
+      213: 4902781380961108971
+    second: guardapolvo2_spritesheet_8dir_17
   - first:
-      213: 1600645640311732008
-    second: walk_spritesheet_8dir_18
+      213: -7575549716549854069
+    second: guardapolvo2_spritesheet_8dir_18
   - first:
-      213: -3035026229635201996
-    second: walk_spritesheet_8dir_19
+      213: 1396684124978879704
+    second: guardapolvo2_spritesheet_8dir_19
   - first:
-      213: 690925828206714583
-    second: walk_spritesheet_8dir_20
+      213: -2074346998834889235
+    second: guardapolvo2_spritesheet_8dir_20
   - first:
-      213: 1695251952164279277
-    second: walk_spritesheet_8dir_21
+      213: 953364549684077209
+    second: guardapolvo2_spritesheet_8dir_21
   - first:
-      213: -1973226369384068328
-    second: walk_spritesheet_8dir_22
+      213: 6031587393632678046
+    second: guardapolvo2_spritesheet_8dir_22
   - first:
-      213: -1912084662642650514
-    second: walk_spritesheet_8dir_23
+      213: 4876968059318545793
+    second: guardapolvo2_spritesheet_8dir_23
   - first:
-      213: -8942823899539505578
-    second: walk_spritesheet_8dir_24
+      213: 7550403243355536871
+    second: guardapolvo2_spritesheet_8dir_24
   - first:
-      213: -425448919086424621
-    second: walk_spritesheet_8dir_25
+      213: 2265213855918507444
+    second: guardapolvo2_spritesheet_8dir_25
   - first:
-      213: 4473417455036967985
-    second: walk_spritesheet_8dir_26
+      213: -2634353919451638362
+    second: guardapolvo2_spritesheet_8dir_26
   - first:
-      213: -3411092065597649116
-    second: walk_spritesheet_8dir_27
+      213: -4602330197121468399
+    second: guardapolvo2_spritesheet_8dir_27
   - first:
-      213: 4908995223345537912
-    second: walk_spritesheet_8dir_28
+      213: 2465856842604761306
+    second: guardapolvo2_spritesheet_8dir_28
   - first:
-      213: -2674381982063240906
-    second: walk_spritesheet_8dir_29
+      213: 810931637763989705
+    second: guardapolvo2_spritesheet_8dir_29
   - first:
-      213: -8422145063844541010
-    second: walk_spritesheet_8dir_30
+      213: 7798882231413631231
+    second: guardapolvo2_spritesheet_8dir_30
   - first:
-      213: 88660965872015853
-    second: walk_spritesheet_8dir_31
+      213: -5753300960817662356
+    second: guardapolvo2_spritesheet_8dir_31
   - first:
-      213: 5369192640173350358
-    second: walk_spritesheet_8dir_32
+      213: 313964811765063922
+    second: guardapolvo2_spritesheet_8dir_32
   - first:
-      213: -236746192228812256
-    second: walk_spritesheet_8dir_33
+      213: -3397038148135353614
+    second: guardapolvo2_spritesheet_8dir_33
   - first:
-      213: -1925340513269539810
-    second: walk_spritesheet_8dir_34
+      213: -1712649725842991860
+    second: guardapolvo2_spritesheet_8dir_34
   - first:
-      213: -3767441052614992395
-    second: walk_spritesheet_8dir_35
+      213: 2528991059341700402
+    second: guardapolvo2_spritesheet_8dir_35
   - first:
-      213: 5282606818130348475
-    second: walk_spritesheet_8dir_36
+      213: -5672018291563312701
+    second: guardapolvo2_spritesheet_8dir_36
   - first:
-      213: -148567487157958461
-    second: walk_spritesheet_8dir_37
+      213: 5441320672176503451
+    second: guardapolvo2_spritesheet_8dir_37
   - first:
-      213: -3932277236410863286
-    second: walk_spritesheet_8dir_38
+      213: 2498728383404378582
+    second: guardapolvo2_spritesheet_8dir_38
   - first:
-      213: -5795942954872102347
-    second: walk_spritesheet_8dir_39
+      213: 1815661204570154481
+    second: guardapolvo2_spritesheet_8dir_39
   - first:
-      213: -7151497363412668713
-    second: walk_spritesheet_8dir_40
+      213: -5020330473015377673
+    second: guardapolvo2_spritesheet_8dir_40
   - first:
-      213: -7575118980464657801
-    second: walk_spritesheet_8dir_41
+      213: -7411647363020087979
+    second: guardapolvo2_spritesheet_8dir_41
   - first:
-      213: 6791825752679663277
-    second: walk_spritesheet_8dir_42
+      213: -3536435440755355124
+    second: guardapolvo2_spritesheet_8dir_42
   - first:
-      213: -491812526861722180
-    second: walk_spritesheet_8dir_43
+      213: 1026952773362701425
+    second: guardapolvo2_spritesheet_8dir_43
   - first:
-      213: 7244154265681150886
-    second: walk_spritesheet_8dir_44
+      213: 7967274917671743360
+    second: guardapolvo2_spritesheet_8dir_44
   - first:
-      213: -7293358661708980130
-    second: walk_spritesheet_8dir_45
+      213: 2041599356754132603
+    second: guardapolvo2_spritesheet_8dir_45
   - first:
-      213: 3901164563985407769
-    second: walk_spritesheet_8dir_46
+      213: -430933578681057327
+    second: guardapolvo2_spritesheet_8dir_46
   - first:
-      213: -3259841827833860284
-    second: walk_spritesheet_8dir_47
+      213: -2871588890607555077
+    second: guardapolvo2_spritesheet_8dir_47
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -241,408 +241,12 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: walk_spritesheet_8dir_0
+      name: guardapolvo2_spritesheet_8dir_0
       rect:
         serializedVersion: 2
-        x: 74
+        x: 68
         y: 1839
-        width: 103
-        height: 173
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: ab52edb3d8f06a460800000000000000
-      internalID: 7252501349195982266
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: walk_spritesheet_8dir_1
-      rect:
-        serializedVersion: 2
-        x: 330
-        y: 1844
-        width: 103
-        height: 168
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 0ae312f7c5ed936a0800000000000000
-      internalID: -6468894900889764192
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: walk_spritesheet_8dir_2
-      rect:
-        serializedVersion: 2
-        x: 586
-        y: 1844
-        width: 103
-        height: 173
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 5a595555244e37de0800000000000000
-      internalID: -1336473690848258651
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: walk_spritesheet_8dir_3
-      rect:
-        serializedVersion: 2
-        x: 842
-        y: 1839
-        width: 103
-        height: 173
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: dfd1f0f53d623c2d0800000000000000
-      internalID: -3259719016011325955
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: walk_spritesheet_8dir_4
-      rect:
-        serializedVersion: 2
-        x: 1098
-        y: 1844
-        width: 103
-        height: 168
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: ae7fe6a0d4c7ccde0800000000000000
-      internalID: -1311536721142286358
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: walk_spritesheet_8dir_5
-      rect:
-        serializedVersion: 2
-        x: 1354
-        y: 1844
-        width: 103
-        height: 173
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: ef17e6c452e9c9140800000000000000
-      internalID: 4727827591865463294
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: walk_spritesheet_8dir_6
-      rect:
-        serializedVersion: 2
-        x: 79
-        y: 1578
-        width: 98
-        height: 183
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 838ebf9e13c6ca460800000000000000
-      internalID: 7254292061421824056
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: walk_spritesheet_8dir_7
-      rect:
-        serializedVersion: 2
-        x: 335
-        y: 1588
-        width: 98
-        height: 173
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: a1077e30c57daa4a0800000000000000
-      internalID: -6581211115246096358
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: walk_spritesheet_8dir_8
-      rect:
-        serializedVersion: 2
-        x: 591
-        y: 1583
-        width: 98
-        height: 183
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: b03d05440dbf25110800000000000000
-      internalID: 1248336918652965643
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: walk_spritesheet_8dir_9
-      rect:
-        serializedVersion: 2
-        x: 847
-        y: 1578
-        width: 98
-        height: 183
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 8507b2a10f9614af0800000000000000
-      internalID: -413933210789253032
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: walk_spritesheet_8dir_10
-      rect:
-        serializedVersion: 2
-        x: 1103
-        y: 1588
-        width: 98
-        height: 173
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 292e2e25f3cbb4810800000000000000
-      internalID: 1750699860323132050
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: walk_spritesheet_8dir_11
-      rect:
-        serializedVersion: 2
-        x: 1359
-        y: 1583
-        width: 98
-        height: 183
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 5e5bfc9d4e3e2d710800000000000000
-      internalID: 1716684980027897317
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: walk_spritesheet_8dir_12
-      rect:
-        serializedVersion: 2
-        x: 79
-        y: 1322
-        width: 98
-        height: 167
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 200a02b055baa6120800000000000000
-      internalID: 2407925332530208770
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: walk_spritesheet_8dir_13
-      rect:
-        serializedVersion: 2
-        x: 335
-        y: 1322
-        width: 98
-        height: 167
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 6f7d8e6f325e55870800000000000000
-      internalID: 8671088600200828918
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: walk_spritesheet_8dir_14
-      rect:
-        serializedVersion: 2
-        x: 591
-        y: 1322
-        width: 98
-        height: 172
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 9ffaad88eadbe5740800000000000000
-      internalID: 5142756381821677561
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: walk_spritesheet_8dir_15
-      rect:
-        serializedVersion: 2
-        x: 847
-        y: 1322
-        width: 98
-        height: 167
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 1bde56f324ff8f850800000000000000
-      internalID: 6411154729558470065
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: walk_spritesheet_8dir_16
-      rect:
-        serializedVersion: 2
-        x: 1103
-        y: 1322
-        width: 98
-        height: 167
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 53a954bf8fcf4cdf0800000000000000
-      internalID: -160725540380763595
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: walk_spritesheet_8dir_17
-      rect:
-        serializedVersion: 2
-        x: 1359
-        y: 1322
-        width: 98
-        height: 172
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: f4483756143e360c0800000000000000
-      internalID: -4583570125718584241
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: walk_spritesheet_8dir_18
-      rect:
-        serializedVersion: 2
-        x: 79
-        y: 1066
-        width: 98
+        width: 120
         height: 178
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -652,19 +256,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 827fe02bab2a63610800000000000000
-      internalID: 1600645640311732008
+      spriteID: dde08b7ba2decce80800000000000000
+      internalID: -8156884057348108579
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: walk_spritesheet_8dir_19
+      name: guardapolvo2_spritesheet_8dir_1
       rect:
         serializedVersion: 2
-        x: 335
-        y: 1071
-        width: 98
+        x: 324
+        y: 1844
+        width: 120
         height: 173
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -674,41 +278,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 434c99279bb61e5d0800000000000000
-      internalID: -3035026229635201996
+      spriteID: 8b0a3e935d2011b20800000000000000
+      internalID: 3103264733057491128
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: walk_spritesheet_8dir_20
+      name: guardapolvo2_spritesheet_8dir_2
       rect:
         serializedVersion: 2
-        x: 591
-        y: 1076
-        width: 98
-        height: 173
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 7de576c4169a69900800000000000000
-      internalID: 690925828206714583
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: walk_spritesheet_8dir_21
-      rect:
-        serializedVersion: 2
-        x: 847
-        y: 1066
-        width: 98
+        x: 580
+        y: 1844
+        width: 120
         height: 178
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -718,20 +300,372 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: de31a8d2baeb68710800000000000000
-      internalID: 1695251952164279277
+      spriteID: dd7159ab08dad29e0800000000000000
+      internalID: -1644467520522610723
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: walk_spritesheet_8dir_22
+      name: guardapolvo2_spritesheet_8dir_3
       rect:
         serializedVersion: 2
-        x: 1103
+        x: 836
+        y: 1839
+        width: 120
+        height: 178
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 575ca57132503eda0800000000000000
+      internalID: -5916879837160880779
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: guardapolvo2_spritesheet_8dir_4
+      rect:
+        serializedVersion: 2
+        x: 1092
+        y: 1844
+        width: 120
+        height: 173
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fff6b3aa79e9004d0800000000000000
+      internalID: -3170359763435556865
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: guardapolvo2_spritesheet_8dir_5
+      rect:
+        serializedVersion: 2
+        x: 1348
+        y: 1844
+        width: 120
+        height: 178
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 49d6f20e6ff5104d0800000000000000
+      internalID: -3170147148764320364
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: guardapolvo2_spritesheet_8dir_6
+      rect:
+        serializedVersion: 2
+        x: 68
+        y: 1578
+        width: 120
+        height: 178
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 11d410411a28c8190800000000000000
+      internalID: -7958842813133533935
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: guardapolvo2_spritesheet_8dir_7
+      rect:
+        serializedVersion: 2
+        x: 324
+        y: 1588
+        width: 120
+        height: 168
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6970359d8e3474670800000000000000
+      internalID: 8522855487179523990
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: guardapolvo2_spritesheet_8dir_8
+      rect:
+        serializedVersion: 2
+        x: 580
+        y: 1583
+        width: 120
+        height: 178
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 13ade48007f1b0b10800000000000000
+      internalID: 1948685829804055089
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: guardapolvo2_spritesheet_8dir_9
+      rect:
+        serializedVersion: 2
+        x: 836
+        y: 1578
+        width: 120
+        height: 178
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cbdd54f0dea6c2f70800000000000000
+      internalID: 9163816908188147132
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: guardapolvo2_spritesheet_8dir_10
+      rect:
+        serializedVersion: 2
+        x: 1092
+        y: 1588
+        width: 120
+        height: 168
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f2430a3bea6d340a0800000000000000
+      internalID: -6898434158375193553
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: guardapolvo2_spritesheet_8dir_11
+      rect:
+        serializedVersion: 2
+        x: 1348
+        y: 1583
+        width: 120
+        height: 178
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9332bdd6f077a5b70800000000000000
+      internalID: 8888547722720387897
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: guardapolvo2_spritesheet_8dir_12
+      rect:
+        serializedVersion: 2
+        x: 68
+        y: 1322
+        width: 109
+        height: 162
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2253289f08d0a3140800000000000000
+      internalID: 4700084008707568930
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: guardapolvo2_spritesheet_8dir_13
+      rect:
+        serializedVersion: 2
+        x: 324
+        y: 1322
+        width: 109
+        height: 162
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b2f944f90c16fdba0800000000000000
+      internalID: -6062019093483708629
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: guardapolvo2_spritesheet_8dir_14
+      rect:
+        serializedVersion: 2
+        x: 580
+        y: 1322
+        width: 109
+        height: 167
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f40894258c3812560800000000000000
+      internalID: 7287250568459419727
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: guardapolvo2_spritesheet_8dir_15
+      rect:
+        serializedVersion: 2
+        x: 836
+        y: 1322
+        width: 109
+        height: 162
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: abc3bb7117fdfb540800000000000000
+      internalID: 5025981385991208122
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: guardapolvo2_spritesheet_8dir_16
+      rect:
+        serializedVersion: 2
+        x: 1092
+        y: 1322
+        width: 109
+        height: 162
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ab6dbfd1601a32c80800000000000000
+      internalID: -8348652236569848134
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: guardapolvo2_spritesheet_8dir_17
+      rect:
+        serializedVersion: 2
+        x: 1348
+        y: 1322
+        width: 109
+        height: 167
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: be3069f90bd2a0440800000000000000
+      internalID: 4902781380961108971
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: guardapolvo2_spritesheet_8dir_18
+      rect:
+        serializedVersion: 2
+        x: 68
+        y: 1066
+        width: 114
+        height: 172
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b8c1cb67bad3ed690800000000000000
+      internalID: -7575549716549854069
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: guardapolvo2_spritesheet_8dir_19
+      rect:
+        serializedVersion: 2
+        x: 324
         y: 1071
-        width: 98
-        height: 173
+        width: 114
+        height: 167
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -740,20 +674,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 81bcd675211bd94e0800000000000000
-      internalID: -1973226369384068328
+      spriteID: 8dc1bcccfc4026310800000000000000
+      internalID: 1396684124978879704
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: walk_spritesheet_8dir_23
+      name: guardapolvo2_spritesheet_8dir_20
       rect:
         serializedVersion: 2
-        x: 1359
+        x: 580
         y: 1076
-        width: 98
-        height: 173
+        width: 114
+        height: 168
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -762,19 +696,85 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: e6256b64129e675e0800000000000000
-      internalID: -1912084662642650514
+      spriteID: ded7c8915607633e0800000000000000
+      internalID: -2074346998834889235
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: walk_spritesheet_8dir_24
+      name: guardapolvo2_spritesheet_8dir_21
+      rect:
+        serializedVersion: 2
+        x: 836
+        y: 1066
+        width: 114
+        height: 172
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 992ae5db1080b3d00800000000000000
+      internalID: 953364549684077209
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: guardapolvo2_spritesheet_8dir_22
+      rect:
+        serializedVersion: 2
+        x: 1092
+        y: 1071
+        width: 114
+        height: 167
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e90333d17c084b350800000000000000
+      internalID: 6031587393632678046
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: guardapolvo2_spritesheet_8dir_23
+      rect:
+        serializedVersion: 2
+        x: 1348
+        y: 1076
+        width: 114
+        height: 168
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 18dab945c987ea340800000000000000
+      internalID: 4876968059318545793
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: guardapolvo2_spritesheet_8dir_24
       rect:
         serializedVersion: 2
         x: 74
         y: 810
-        width: 103
+        width: 114
         height: 178
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -784,19 +784,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 65ef2136b05b4e380800000000000000
-      internalID: -8942823899539505578
+      spriteID: 7edf92ffebb68c860800000000000000
+      internalID: 7550403243355536871
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: walk_spritesheet_8dir_25
+      name: guardapolvo2_spritesheet_8dir_25
       rect:
         serializedVersion: 2
         x: 330
         y: 815
-        width: 103
+        width: 114
         height: 173
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -806,19 +806,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 3dd97c35670881af0800000000000000
-      internalID: -425448919086424621
+      spriteID: 4b5c0561008af6f10800000000000000
+      internalID: 2265213855918507444
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: walk_spritesheet_8dir_26
+      name: guardapolvo2_spritesheet_8dir_26
       rect:
         serializedVersion: 2
         x: 586
         y: 815
-        width: 103
+        width: 114
         height: 178
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -828,19 +828,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 13ca2836975c41e30800000000000000
-      internalID: 4473417455036967985
+      spriteID: 6a55d625115e07bd0800000000000000
+      internalID: -2634353919451638362
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: walk_spritesheet_8dir_27
+      name: guardapolvo2_spritesheet_8dir_27
       rect:
         serializedVersion: 2
         x: 842
         y: 810
-        width: 103
+        width: 114
         height: 178
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -850,19 +850,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 42f06edc6dd59a0d0800000000000000
-      internalID: -3411092065597649116
+      spriteID: 1187585e11d3120c0800000000000000
+      internalID: -4602330197121468399
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: walk_spritesheet_8dir_28
+      name: guardapolvo2_spritesheet_8dir_28
       rect:
         serializedVersion: 2
         x: 1098
         y: 815
-        width: 103
+        width: 114
         height: 173
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -872,19 +872,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 873a99b8521402440800000000000000
-      internalID: 4908995223345537912
+      spriteID: ad05c62dbbb783220800000000000000
+      internalID: 2465856842604761306
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: walk_spritesheet_8dir_29
+      name: guardapolvo2_spritesheet_8dir_29
       rect:
         serializedVersion: 2
         x: 1354
         y: 815
-        width: 103
+        width: 114
         height: 178
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -894,152 +894,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 6395a6db1cfa2ead0800000000000000
-      internalID: -2674381982063240906
+      spriteID: 9c06c0e2702014b00800000000000000
+      internalID: 810931637763989705
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: walk_spritesheet_8dir_30
-      rect:
-        serializedVersion: 2
-        x: 79
-        y: 554
-        width: 98
-        height: 178
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: ead8cb6dfa78e1b80800000000000000
-      internalID: -8422145063844541010
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: walk_spritesheet_8dir_31
-      rect:
-        serializedVersion: 2
-        x: 335
-        y: 559
-        width: 98
-        height: 173
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: de99e30cdacfa3100800000000000000
-      internalID: 88660965872015853
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: walk_spritesheet_8dir_32
-      rect:
-        serializedVersion: 2
-        x: 591
-        y: 564
-        width: 98
-        height: 173
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 6dd9c205244338a40800000000000000
-      internalID: 5369192640173350358
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: walk_spritesheet_8dir_33
-      rect:
-        serializedVersion: 2
-        x: 847
-        y: 554
-        width: 98
-        height: 178
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 02a764ea798e6bcf0800000000000000
-      internalID: -236746192228812256
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: walk_spritesheet_8dir_34
-      rect:
-        serializedVersion: 2
-        x: 1103
-        y: 559
-        width: 98
-        height: 173
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: e1c96ea0101d745e0800000000000000
-      internalID: -1925340513269539810
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: walk_spritesheet_8dir_35
-      rect:
-        serializedVersion: 2
-        x: 1359
-        y: 564
-        width: 98
-        height: 173
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 5fdd8aac25c57bbc0800000000000000
-      internalID: -3767441052614992395
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: walk_spritesheet_8dir_36
+      name: guardapolvo2_spritesheet_8dir_30
       rect:
         serializedVersion: 2
         x: 74
-        y: 298
-        width: 103
-        height: 167
+        y: 554
+        width: 114
+        height: 172
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1048,19 +916,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: bb947b2a9e69f4940800000000000000
-      internalID: 5282606818130348475
+      spriteID: ff8e388b1123b3c60800000000000000
+      internalID: 7798882231413631231
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: walk_spritesheet_8dir_37
+      name: guardapolvo2_spritesheet_8dir_31
       rect:
         serializedVersion: 2
         x: 330
-        y: 298
-        width: 103
+        y: 559
+        width: 114
         height: 167
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -1070,20 +938,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 3c807c658ae20fdf0800000000000000
-      internalID: -148567487157958461
+      spriteID: c66bc88224b2820b0800000000000000
+      internalID: -5753300960817662356
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: walk_spritesheet_8dir_38
+      name: guardapolvo2_spritesheet_8dir_32
       rect:
         serializedVersion: 2
         x: 586
-        y: 298
-        width: 103
-        height: 172
+        y: 564
+        width: 114
+        height: 168
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1092,63 +960,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: a41306500bebd69c0800000000000000
-      internalID: -3932277236410863286
+      spriteID: 2f0aa35355d6b5400800000000000000
+      internalID: 313964811765063922
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: walk_spritesheet_8dir_39
+      name: guardapolvo2_spritesheet_8dir_33
       rect:
         serializedVersion: 2
         x: 842
-        y: 298
-        width: 103
-        height: 167
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 532ab6c379ca09fa0800000000000000
-      internalID: -5795942954872102347
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: walk_spritesheet_8dir_40
-      rect:
-        serializedVersion: 2
-        x: 1098
-        y: 298
-        width: 103
-        height: 167
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 7de25a9c907c0cc90800000000000000
-      internalID: -7151497363412668713
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: walk_spritesheet_8dir_41
-      rect:
-        serializedVersion: 2
-        x: 1354
-        y: 298
-        width: 103
+        y: 554
+        width: 114
         height: 172
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -1158,20 +982,64 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 77ab5160c65cfd690800000000000000
-      internalID: -7575118980464657801
+      spriteID: 2f201f37dcb4bd0d0800000000000000
+      internalID: -3397038148135353614
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: walk_spritesheet_8dir_42
+      name: guardapolvo2_spritesheet_8dir_34
+      rect:
+        serializedVersion: 2
+        x: 1098
+        y: 559
+        width: 114
+        height: 167
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c05557af5227b38e0800000000000000
+      internalID: -1712649725842991860
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: guardapolvo2_spritesheet_8dir_35
+      rect:
+        serializedVersion: 2
+        x: 1354
+        y: 564
+        width: 114
+        height: 168
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 23d633428f7c81320800000000000000
+      internalID: 2528991059341700402
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: guardapolvo2_spritesheet_8dir_36
       rect:
         serializedVersion: 2
         x: 79
-        y: 42
-        width: 98
-        height: 178
+        y: 298
+        width: 109
+        height: 167
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1180,20 +1048,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: da642d49989614e50800000000000000
-      internalID: 6791825752679663277
+      spriteID: 3c9c9db5a61f841b0800000000000000
+      internalID: -5672018291563312701
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: walk_spritesheet_8dir_43
+      name: guardapolvo2_spritesheet_8dir_37
       rect:
         serializedVersion: 2
         x: 335
-        y: 52
-        width: 98
-        height: 168
+        y: 298
+        width: 109
+        height: 167
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1202,20 +1070,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: cbdd150dc1bbc29f0800000000000000
-      internalID: -491812526861722180
+      spriteID: b9af11e6254738b40800000000000000
+      internalID: 5441320672176503451
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: walk_spritesheet_8dir_44
+      name: guardapolvo2_spritesheet_8dir_38
       rect:
         serializedVersion: 2
         x: 591
-        y: 47
-        width: 98
-        height: 178
+        y: 298
+        width: 109
+        height: 172
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1224,19 +1092,85 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 6a34e086ce7688460800000000000000
-      internalID: 7244154265681150886
+      spriteID: 6d90103d9344da220800000000000000
+      internalID: 2498728383404378582
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: walk_spritesheet_8dir_45
+      name: guardapolvo2_spritesheet_8dir_39
       rect:
         serializedVersion: 2
         x: 847
+        y: 298
+        width: 109
+        height: 167
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1f5acdaee36823910800000000000000
+      internalID: 1815661204570154481
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: guardapolvo2_spritesheet_8dir_40
+      rect:
+        serializedVersion: 2
+        x: 1103
+        y: 298
+        width: 109
+        height: 167
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7f089dc9804345ab0800000000000000
+      internalID: -5020330473015377673
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: guardapolvo2_spritesheet_8dir_41
+      rect:
+        serializedVersion: 2
+        x: 1359
+        y: 298
+        width: 109
+        height: 172
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 55d1abeedf9842990800000000000000
+      internalID: -7411647363020087979
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: guardapolvo2_spritesheet_8dir_42
+      rect:
+        serializedVersion: 2
+        x: 68
         y: 42
-        width: 98
+        width: 120
         height: 178
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -1246,19 +1180,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: e50615560f8c8ca90800000000000000
-      internalID: -7293358661708980130
+      spriteID: c02dca614be0ceec0800000000000000
+      internalID: -3536435440755355124
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: walk_spritesheet_8dir_46
+      name: guardapolvo2_spritesheet_8dir_43
       rect:
         serializedVersion: 2
-        x: 1103
+        x: 324
         y: 52
-        width: 98
+        width: 120
         height: 168
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -1268,19 +1202,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 91f11be6088b32630800000000000000
-      internalID: 3901164563985407769
+      spriteID: 174d2693b18704e00800000000000000
+      internalID: 1026952773362701425
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: walk_spritesheet_8dir_47
+      name: guardapolvo2_spritesheet_8dir_44
       rect:
         serializedVersion: 2
-        x: 1359
+        x: 580
         y: 47
-        width: 98
+        width: 120
         height: 178
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -1290,8 +1224,74 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 44fa0040127b2c2d0800000000000000
-      internalID: -3259841827833860284
+      spriteID: 08f24bf3352719e60800000000000000
+      internalID: 7967274917671743360
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: guardapolvo2_spritesheet_8dir_45
+      rect:
+        serializedVersion: 2
+        x: 836
+        y: 42
+        width: 120
+        height: 178
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b7efef05cc7355c10800000000000000
+      internalID: 2041599356754132603
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: guardapolvo2_spritesheet_8dir_46
+      rect:
+        serializedVersion: 2
+        x: 1092
+        y: 52
+        width: 120
+        height: 168
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1df7de08134050af0800000000000000
+      internalID: -430933578681057327
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: guardapolvo2_spritesheet_8dir_47
+      rect:
+        serializedVersion: 2
+        x: 1348
+        y: 47
+        width: 120
+        height: 178
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bfde06a4e111628d0800000000000000
+      internalID: -2871588890607555077
       vertices: []
       indices: 
       edges: []
@@ -1310,54 +1310,54 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      walk_spritesheet_8dir_0: 7252501349195982266
-      walk_spritesheet_8dir_1: -6468894900889764192
-      walk_spritesheet_8dir_10: 1750699860323132050
-      walk_spritesheet_8dir_11: 1716684980027897317
-      walk_spritesheet_8dir_12: 2407925332530208770
-      walk_spritesheet_8dir_13: 8671088600200828918
-      walk_spritesheet_8dir_14: 5142756381821677561
-      walk_spritesheet_8dir_15: 6411154729558470065
-      walk_spritesheet_8dir_16: -160725540380763595
-      walk_spritesheet_8dir_17: -4583570125718584241
-      walk_spritesheet_8dir_18: 1600645640311732008
-      walk_spritesheet_8dir_19: -3035026229635201996
-      walk_spritesheet_8dir_2: -1336473690848258651
-      walk_spritesheet_8dir_20: 690925828206714583
-      walk_spritesheet_8dir_21: 1695251952164279277
-      walk_spritesheet_8dir_22: -1973226369384068328
-      walk_spritesheet_8dir_23: -1912084662642650514
-      walk_spritesheet_8dir_24: -8942823899539505578
-      walk_spritesheet_8dir_25: -425448919086424621
-      walk_spritesheet_8dir_26: 4473417455036967985
-      walk_spritesheet_8dir_27: -3411092065597649116
-      walk_spritesheet_8dir_28: 4908995223345537912
-      walk_spritesheet_8dir_29: -2674381982063240906
-      walk_spritesheet_8dir_3: -3259719016011325955
-      walk_spritesheet_8dir_30: -8422145063844541010
-      walk_spritesheet_8dir_31: 88660965872015853
-      walk_spritesheet_8dir_32: 5369192640173350358
-      walk_spritesheet_8dir_33: -236746192228812256
-      walk_spritesheet_8dir_34: -1925340513269539810
-      walk_spritesheet_8dir_35: -3767441052614992395
-      walk_spritesheet_8dir_36: 5282606818130348475
-      walk_spritesheet_8dir_37: -148567487157958461
-      walk_spritesheet_8dir_38: -3932277236410863286
-      walk_spritesheet_8dir_39: -5795942954872102347
-      walk_spritesheet_8dir_4: -1311536721142286358
-      walk_spritesheet_8dir_40: -7151497363412668713
-      walk_spritesheet_8dir_41: -7575118980464657801
-      walk_spritesheet_8dir_42: 6791825752679663277
-      walk_spritesheet_8dir_43: -491812526861722180
-      walk_spritesheet_8dir_44: 7244154265681150886
-      walk_spritesheet_8dir_45: -7293358661708980130
-      walk_spritesheet_8dir_46: 3901164563985407769
-      walk_spritesheet_8dir_47: -3259841827833860284
-      walk_spritesheet_8dir_5: 4727827591865463294
-      walk_spritesheet_8dir_6: 7254292061421824056
-      walk_spritesheet_8dir_7: -6581211115246096358
-      walk_spritesheet_8dir_8: 1248336918652965643
-      walk_spritesheet_8dir_9: -413933210789253032
+      guardapolvo2_spritesheet_8dir_0: -8156884057348108579
+      guardapolvo2_spritesheet_8dir_1: 3103264733057491128
+      guardapolvo2_spritesheet_8dir_10: -6898434158375193553
+      guardapolvo2_spritesheet_8dir_11: 8888547722720387897
+      guardapolvo2_spritesheet_8dir_12: 4700084008707568930
+      guardapolvo2_spritesheet_8dir_13: -6062019093483708629
+      guardapolvo2_spritesheet_8dir_14: 7287250568459419727
+      guardapolvo2_spritesheet_8dir_15: 5025981385991208122
+      guardapolvo2_spritesheet_8dir_16: -8348652236569848134
+      guardapolvo2_spritesheet_8dir_17: 4902781380961108971
+      guardapolvo2_spritesheet_8dir_18: -7575549716549854069
+      guardapolvo2_spritesheet_8dir_19: 1396684124978879704
+      guardapolvo2_spritesheet_8dir_2: -1644467520522610723
+      guardapolvo2_spritesheet_8dir_20: -2074346998834889235
+      guardapolvo2_spritesheet_8dir_21: 953364549684077209
+      guardapolvo2_spritesheet_8dir_22: 6031587393632678046
+      guardapolvo2_spritesheet_8dir_23: 4876968059318545793
+      guardapolvo2_spritesheet_8dir_24: 7550403243355536871
+      guardapolvo2_spritesheet_8dir_25: 2265213855918507444
+      guardapolvo2_spritesheet_8dir_26: -2634353919451638362
+      guardapolvo2_spritesheet_8dir_27: -4602330197121468399
+      guardapolvo2_spritesheet_8dir_28: 2465856842604761306
+      guardapolvo2_spritesheet_8dir_29: 810931637763989705
+      guardapolvo2_spritesheet_8dir_3: -5916879837160880779
+      guardapolvo2_spritesheet_8dir_30: 7798882231413631231
+      guardapolvo2_spritesheet_8dir_31: -5753300960817662356
+      guardapolvo2_spritesheet_8dir_32: 313964811765063922
+      guardapolvo2_spritesheet_8dir_33: -3397038148135353614
+      guardapolvo2_spritesheet_8dir_34: -1712649725842991860
+      guardapolvo2_spritesheet_8dir_35: 2528991059341700402
+      guardapolvo2_spritesheet_8dir_36: -5672018291563312701
+      guardapolvo2_spritesheet_8dir_37: 5441320672176503451
+      guardapolvo2_spritesheet_8dir_38: 2498728383404378582
+      guardapolvo2_spritesheet_8dir_39: 1815661204570154481
+      guardapolvo2_spritesheet_8dir_4: -3170359763435556865
+      guardapolvo2_spritesheet_8dir_40: -5020330473015377673
+      guardapolvo2_spritesheet_8dir_41: -7411647363020087979
+      guardapolvo2_spritesheet_8dir_42: -3536435440755355124
+      guardapolvo2_spritesheet_8dir_43: 1026952773362701425
+      guardapolvo2_spritesheet_8dir_44: 7967274917671743360
+      guardapolvo2_spritesheet_8dir_45: 2041599356754132603
+      guardapolvo2_spritesheet_8dir_46: -430933578681057327
+      guardapolvo2_spritesheet_8dir_47: -2871588890607555077
+      guardapolvo2_spritesheet_8dir_5: -3170147148764320364
+      guardapolvo2_spritesheet_8dir_6: -7958842813133533935
+      guardapolvo2_spritesheet_8dir_7: 8522855487179523990
+      guardapolvo2_spritesheet_8dir_8: 1948685829804055089
+      guardapolvo2_spritesheet_8dir_9: 9163816908188147132
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -1,25 +1,25 @@
 fileFormatVersion: 2
-guid: 2856510d30a5c229d843d2d9dc98866c
+guid: 017c320ae16f5e81ca461ee472d91d0b
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 330952627123643227
-    second: walk_south_east_0
+      213: 3022558911019874077
+    second: walk_north_east_0
   - first:
-      213: 270524434948898975
-    second: walk_south_east_1
+      213: 1994388664370540114
+    second: walk_north_east_1
   - first:
-      213: 6273667265241114577
-    second: walk_south_east_2
+      213: 5218952278208948579
+    second: walk_north_east_2
   - first:
-      213: 5739232112295330834
-    second: walk_south_east_3
+      213: 6448901677069913799
+    second: walk_north_east_3
   - first:
-      213: -6982923830131019960
-    second: walk_south_east_4
+      213: -8137003208606288787
+    second: walk_north_east_4
   - first:
-      213: -7090008756910138813
-    second: walk_south_east_5
+      213: -1219534796665808136
+    second: walk_north_east_5
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -115,13 +115,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: walk_south_east_0
+      name: walk_north_east_0
       rect:
         serializedVersion: 2
         x: 79
         y: 42
         width: 98
-        height: 178
+        height: 183
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -130,39 +130,17 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: b53ef2139a7c79400800000000000000
-      internalID: 330952627123643227
+      spriteID: d17f70cb05942f920800000000000000
+      internalID: 3022558911019874077
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: walk_south_east_1
+      name: walk_north_east_1
       rect:
         serializedVersion: 2
         x: 335
-        y: 47
-        width: 98
-        height: 173
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: f9041305a8811c300800000000000000
-      internalID: 270524434948898975
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: walk_south_east_2
-      rect:
-        serializedVersion: 2
-        x: 591
         y: 52
         width: 98
         height: 173
@@ -174,20 +152,42 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 1d761bf632b801750800000000000000
-      internalID: 6273667265241114577
+      spriteID: 25e2fdb6ced7dab10800000000000000
+      internalID: 1994388664370540114
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: walk_south_east_3
+      name: walk_north_east_2
+      rect:
+        serializedVersion: 2
+        x: 591
+        y: 47
+        width: 98
+        height: 183
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3692c5222717d6840800000000000000
+      internalID: 5218952278208948579
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: walk_north_east_3
       rect:
         serializedVersion: 2
         x: 847
         y: 42
         width: 98
-        height: 178
+        height: 183
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -196,39 +196,17 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 214c0e8c239d5af40800000000000000
-      internalID: 5739232112295330834
+      spriteID: 7ce4c2558e91f7950800000000000000
+      internalID: 6448901677069913799
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: walk_south_east_4
+      name: walk_north_east_4
       rect:
         serializedVersion: 2
         x: 1103
-        y: 47
-        width: 98
-        height: 173
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 84f2e6b06cba71f90800000000000000
-      internalID: -6982923830131019960
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: walk_south_east_5
-      rect:
-        serializedVersion: 2
-        x: 1359
         y: 52
         width: 98
         height: 173
@@ -240,8 +218,30 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 34a56fd999a3b9d90800000000000000
-      internalID: -7090008756910138813
+      spriteID: d64fec681be831f80800000000000000
+      internalID: -8137003208606288787
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: walk_north_east_5
+      rect:
+        serializedVersion: 2
+        x: 1359
+        y: 47
+        width: 98
+        height: 183
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8fa91855097531fe0800000000000000
+      internalID: -1219534796665808136
       vertices: []
       indices: 
       edges: []
@@ -260,12 +260,12 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      walk_south_east_0: 330952627123643227
-      walk_south_east_1: 270524434948898975
-      walk_south_east_2: 6273667265241114577
-      walk_south_east_3: 5739232112295330834
-      walk_south_east_4: -6982923830131019960
-      walk_south_east_5: -7090008756910138813
+      walk_north_east_0: 3022558911019874077
+      walk_north_east_1: 1994388664370540114
+      walk_north_east_2: 5218952278208948579
+      walk_north_east_3: 6448901677069913799
+      walk_north_east_4: -8137003208606288787
+      walk_north_east_5: -1219534796665808136
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

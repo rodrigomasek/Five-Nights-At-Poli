@@ -1,25 +1,25 @@
 fileFormatVersion: 2
-guid: 4985059ddd6bdcf29babdd2e5981adb8
+guid: eea72f12fa59b524fad7634f05e298be
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 2383973654478106631
-    second: walk_north_west_0
+      213: -5239886663196669727
+    second: walk_south_west_0
   - first:
-      213: 4436192426176861854
-    second: walk_north_west_1
+      213: 5063507339365537001
+    second: walk_south_west_1
   - first:
-      213: -2798641135524115939
-    second: walk_north_west_2
+      213: 1631474608622607959
+    second: walk_south_west_2
   - first:
-      213: 4200510445772006144
-    second: walk_north_west_3
+      213: -7964187941094022176
+    second: walk_south_west_3
   - first:
-      213: 8726607693663935318
-    second: walk_north_west_4
+      213: -7808929041198215359
+    second: walk_south_west_4
   - first:
-      213: -6474666369464761632
-    second: walk_north_west_5
+      213: -5683352192116551941
+    second: walk_south_west_5
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -115,7 +115,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: walk_north_west_0
+      name: walk_south_west_0
       rect:
         serializedVersion: 2
         x: 79
@@ -130,20 +130,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 700be0d6863951120800000000000000
-      internalID: 2383973654478106631
+      spriteID: 1e80bd887de2847b0800000000000000
+      internalID: -5239886663196669727
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: walk_north_west_1
+      name: walk_south_west_1
       rect:
         serializedVersion: 2
         x: 335
-        y: 52
+        y: 47
         width: 98
-        height: 168
+        height: 173
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -152,20 +152,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: e96dc85f185809d30800000000000000
-      internalID: 4436192426176861854
+      spriteID: 9e45778f811354640800000000000000
+      internalID: 5063507339365537001
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: walk_north_west_2
+      name: walk_south_west_2
       rect:
         serializedVersion: 2
         x: 591
-        y: 47
+        y: 52
         width: 98
-        height: 178
+        height: 173
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -174,14 +174,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: d1a0a4f07ba3929d0800000000000000
-      internalID: -2798641135524115939
+      spriteID: 75e150b338924a610800000000000000
+      internalID: 1631474608622607959
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: walk_north_west_3
+      name: walk_south_west_3
       rect:
         serializedVersion: 2
         x: 847
@@ -196,20 +196,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 003ee83cef53b4a30800000000000000
-      internalID: 4200510445772006144
+      spriteID: 0e324ae7345897190800000000000000
+      internalID: -7964187941094022176
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: walk_north_west_4
+      name: walk_south_west_4
       rect:
         serializedVersion: 2
         x: 1103
-        y: 52
+        y: 47
         width: 98
-        height: 168
+        height: 173
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -218,20 +218,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 65b970b36732b1970800000000000000
-      internalID: 8726607693663935318
+      spriteID: 14f0627196c11a390800000000000000
+      internalID: -7808929041198215359
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: walk_north_west_5
+      name: walk_south_west_5
       rect:
         serializedVersion: 2
         x: 1359
-        y: 47
+        y: 52
         width: 98
-        height: 178
+        height: 173
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -240,8 +240,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 0e282e0cd3d5526a0800000000000000
-      internalID: -6474666369464761632
+      spriteID: bfe847ffa4da021b0800000000000000
+      internalID: -5683352192116551941
       vertices: []
       indices: 
       edges: []
@@ -260,12 +260,12 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      walk_north_west_0: 2383973654478106631
-      walk_north_west_1: 4436192426176861854
-      walk_north_west_2: -2798641135524115939
-      walk_north_west_3: 4200510445772006144
-      walk_north_west_4: 8726607693663935318
-      walk_north_west_5: -6474666369464761632
+      walk_south_west_0: -5239886663196669727
+      walk_south_west_1: 5063507339365537001
+      walk_south_west_2: 1631474608622607959
+      walk_south_west_3: -7964187941094022176
+      walk_south_west_4: -7808929041198215359
+      walk_south_west_5: -5683352192116551941
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

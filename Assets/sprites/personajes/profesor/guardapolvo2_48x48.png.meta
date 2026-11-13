@@ -1,0 +1,1365 @@
+fileFormatVersion: 2
+guid: 90cc7682c0e3f331296d600915aa844d
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 6888815238449003871
+    second: guardapolvo2_48x48_0
+  - first:
+      213: -4407710800903690911
+    second: guardapolvo2_48x48_1
+  - first:
+      213: 6379220426677151544
+    second: guardapolvo2_48x48_2
+  - first:
+      213: -5064978681928007988
+    second: guardapolvo2_48x48_3
+  - first:
+      213: 3849138423673471326
+    second: guardapolvo2_48x48_4
+  - first:
+      213: 576395456426626776
+    second: guardapolvo2_48x48_5
+  - first:
+      213: 1141454002629354844
+    second: guardapolvo2_48x48_6
+  - first:
+      213: -6568147278197641205
+    second: guardapolvo2_48x48_7
+  - first:
+      213: -649751276622075112
+    second: guardapolvo2_48x48_8
+  - first:
+      213: -2842645526773235743
+    second: guardapolvo2_48x48_9
+  - first:
+      213: -1419968361813335308
+    second: guardapolvo2_48x48_10
+  - first:
+      213: 609307208678392930
+    second: guardapolvo2_48x48_11
+  - first:
+      213: -6717914231445871334
+    second: guardapolvo2_48x48_12
+  - first:
+      213: 769195765140963711
+    second: guardapolvo2_48x48_13
+  - first:
+      213: -6175675773452977846
+    second: guardapolvo2_48x48_14
+  - first:
+      213: 7632593402362702995
+    second: guardapolvo2_48x48_15
+  - first:
+      213: -444179035412998156
+    second: guardapolvo2_48x48_16
+  - first:
+      213: 7865055041590883602
+    second: guardapolvo2_48x48_17
+  - first:
+      213: -7823174343005834999
+    second: guardapolvo2_48x48_18
+  - first:
+      213: -3785338721812610782
+    second: guardapolvo2_48x48_19
+  - first:
+      213: -8780571772470245340
+    second: guardapolvo2_48x48_20
+  - first:
+      213: -5456682307333160699
+    second: guardapolvo2_48x48_21
+  - first:
+      213: 1807463666521160946
+    second: guardapolvo2_48x48_22
+  - first:
+      213: 7956389576864579829
+    second: guardapolvo2_48x48_23
+  - first:
+      213: 2662605073667495306
+    second: guardapolvo2_48x48_24
+  - first:
+      213: -6062725750496471946
+    second: guardapolvo2_48x48_25
+  - first:
+      213: -2844645326368705831
+    second: guardapolvo2_48x48_26
+  - first:
+      213: 5984311811629016940
+    second: guardapolvo2_48x48_27
+  - first:
+      213: -4243178821517582031
+    second: guardapolvo2_48x48_28
+  - first:
+      213: -4679915277564756584
+    second: guardapolvo2_48x48_29
+  - first:
+      213: 2355838665746839007
+    second: guardapolvo2_48x48_30
+  - first:
+      213: 581444511497735729
+    second: guardapolvo2_48x48_31
+  - first:
+      213: -2194630145990218817
+    second: guardapolvo2_48x48_32
+  - first:
+      213: 7463475942980607198
+    second: guardapolvo2_48x48_33
+  - first:
+      213: -4902430240783035517
+    second: guardapolvo2_48x48_34
+  - first:
+      213: 8867934295126783123
+    second: guardapolvo2_48x48_35
+  - first:
+      213: 4643534850825453112
+    second: guardapolvo2_48x48_36
+  - first:
+      213: 2041885399576125079
+    second: guardapolvo2_48x48_37
+  - first:
+      213: 4481324229079347391
+    second: guardapolvo2_48x48_38
+  - first:
+      213: 3231656817801393057
+    second: guardapolvo2_48x48_39
+  - first:
+      213: 2205600295524022579
+    second: guardapolvo2_48x48_40
+  - first:
+      213: 2034073379738361213
+    second: guardapolvo2_48x48_41
+  - first:
+      213: -219636062317270274
+    second: guardapolvo2_48x48_42
+  - first:
+      213: -3298096634964624124
+    second: guardapolvo2_48x48_43
+  - first:
+      213: 9203062029503274288
+    second: guardapolvo2_48x48_44
+  - first:
+      213: -6300570723786727693
+    second: guardapolvo2_48x48_45
+  - first:
+      213: 1017950096254991049
+    second: guardapolvo2_48x48_46
+  - first:
+      213: -5564956448003661193
+    second: guardapolvo2_48x48_47
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: guardapolvo2_48x48_0
+      rect:
+        serializedVersion: 2
+        x: 12
+        y: 344
+        width: 24
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f5dfc0bf5fcf99f50800000000000000
+      internalID: 6888815238449003871
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: guardapolvo2_48x48_1
+      rect:
+        serializedVersion: 2
+        x: 60
+        y: 345
+        width: 24
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 165ab7f216aa4d2c0800000000000000
+      internalID: -4407710800903690911
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: guardapolvo2_48x48_2
+      rect:
+        serializedVersion: 2
+        x: 108
+        y: 345
+        width: 24
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 837e104fd2b878850800000000000000
+      internalID: 6379220426677151544
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: guardapolvo2_48x48_3
+      rect:
+        serializedVersion: 2
+        x: 156
+        y: 344
+        width: 24
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cce31c469b495b9b0800000000000000
+      internalID: -5064978681928007988
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: guardapolvo2_48x48_4
+      rect:
+        serializedVersion: 2
+        x: 204
+        y: 345
+        width: 24
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e514d52b003ea6530800000000000000
+      internalID: 3849138423673471326
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: guardapolvo2_48x48_5
+      rect:
+        serializedVersion: 2
+        x: 252
+        y: 345
+        width: 24
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8de457e1d94cff700800000000000000
+      internalID: 576395456426626776
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: guardapolvo2_48x48_6
+      rect:
+        serializedVersion: 2
+        x: 12
+        y: 295
+        width: 24
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c55ab222e5247df00800000000000000
+      internalID: 1141454002629354844
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: guardapolvo2_48x48_7
+      rect:
+        serializedVersion: 2
+        x: 60
+        y: 297
+        width: 24
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b00b49a99d049d4a0800000000000000
+      internalID: -6568147278197641205
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: guardapolvo2_48x48_8
+      rect:
+        serializedVersion: 2
+        x: 108
+        y: 296
+        width: 24
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 81ba59c08ae9bf6f0800000000000000
+      internalID: -649751276622075112
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: guardapolvo2_48x48_9
+      rect:
+        serializedVersion: 2
+        x: 156
+        y: 295
+        width: 24
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1eff35254f4ec88d0800000000000000
+      internalID: -2842645526773235743
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: guardapolvo2_48x48_10
+      rect:
+        serializedVersion: 2
+        x: 204
+        y: 297
+        width: 24
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4f2a2d95c424b4ce0800000000000000
+      internalID: -1419968361813335308
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: guardapolvo2_48x48_11
+      rect:
+        serializedVersion: 2
+        x: 252
+        y: 296
+        width: 24
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2644c549da1b47800800000000000000
+      internalID: 609307208678392930
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: guardapolvo2_48x48_12
+      rect:
+        serializedVersion: 2
+        x: 12
+        y: 247
+        width: 22
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a15a02b799c25c2a0800000000000000
+      internalID: -6717914231445871334
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: guardapolvo2_48x48_13
+      rect:
+        serializedVersion: 2
+        x: 60
+        y: 247
+        width: 22
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f7146f7197bbcaa00800000000000000
+      internalID: 769195765140963711
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: guardapolvo2_48x48_14
+      rect:
+        serializedVersion: 2
+        x: 108
+        y: 247
+        width: 22
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a49795baa979b4aa0800000000000000
+      internalID: -6175675773452977846
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: guardapolvo2_48x48_15
+      rect:
+        serializedVersion: 2
+        x: 156
+        y: 247
+        width: 22
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 39ca1de924b6ce960800000000000000
+      internalID: 7632593402362702995
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: guardapolvo2_48x48_16
+      rect:
+        serializedVersion: 2
+        x: 204
+        y: 247
+        width: 22
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4f758894585f5d9f0800000000000000
+      internalID: -444179035412998156
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: guardapolvo2_48x48_17
+      rect:
+        serializedVersion: 2
+        x: 252
+        y: 247
+        width: 22
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2157be4b3e9462d60800000000000000
+      internalID: 7865055041590883602
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: guardapolvo2_48x48_18
+      rect:
+        serializedVersion: 2
+        x: 12
+        y: 199
+        width: 23
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 901ff2d42608e6390800000000000000
+      internalID: -7823174343005834999
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: guardapolvo2_48x48_19
+      rect:
+        serializedVersion: 2
+        x: 60
+        y: 200
+        width: 23
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 22104d3fc76c77bc0800000000000000
+      internalID: -3785338721812610782
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: guardapolvo2_48x48_20
+      rect:
+        serializedVersion: 2
+        x: 108
+        y: 201
+        width: 23
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 428c6119e74252680800000000000000
+      internalID: -8780571772470245340
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: guardapolvo2_48x48_21
+      rect:
+        serializedVersion: 2
+        x: 156
+        y: 199
+        width: 23
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5018f3b2a58f544b0800000000000000
+      internalID: -5456682307333160699
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: guardapolvo2_48x48_22
+      rect:
+        serializedVersion: 2
+        x: 204
+        y: 200
+        width: 23
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2fc3b6bd0a6651910800000000000000
+      internalID: 1807463666521160946
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: guardapolvo2_48x48_23
+      rect:
+        serializedVersion: 2
+        x: 252
+        y: 201
+        width: 23
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5f042a75a26ca6e60800000000000000
+      internalID: 7956389576864579829
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: guardapolvo2_48x48_24
+      rect:
+        serializedVersion: 2
+        x: 13
+        y: 151
+        width: 23
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a859a19153973f420800000000000000
+      internalID: 2662605073667495306
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: guardapolvo2_48x48_25
+      rect:
+        serializedVersion: 2
+        x: 61
+        y: 152
+        width: 23
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6745b073d0fdcdba0800000000000000
+      internalID: -6062725750496471946
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: guardapolvo2_48x48_26
+      rect:
+        serializedVersion: 2
+        x: 109
+        y: 152
+        width: 23
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9d271d1b52ac588d0800000000000000
+      internalID: -2844645326368705831
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: guardapolvo2_48x48_27
+      rect:
+        serializedVersion: 2
+        x: 157
+        y: 151
+        width: 23
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c67625de2eb8c0350800000000000000
+      internalID: 5984311811629016940
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: guardapolvo2_48x48_28
+      rect:
+        serializedVersion: 2
+        x: 205
+        y: 152
+        width: 23
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 131ebf8d7533d15c0800000000000000
+      internalID: -4243178821517582031
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: guardapolvo2_48x48_29
+      rect:
+        serializedVersion: 2
+        x: 253
+        y: 152
+        width: 23
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 89d34dda9d99d0fb0800000000000000
+      internalID: -4679915277564756584
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: guardapolvo2_48x48_30
+      rect:
+        serializedVersion: 2
+        x: 13
+        y: 103
+        width: 23
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fd578f3e8ce91b020800000000000000
+      internalID: 2355838665746839007
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: guardapolvo2_48x48_31
+      rect:
+        serializedVersion: 2
+        x: 61
+        y: 104
+        width: 23
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 13e4c6cd3b4b11800800000000000000
+      internalID: 581444511497735729
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: guardapolvo2_48x48_32
+      rect:
+        serializedVersion: 2
+        x: 109
+        y: 105
+        width: 23
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fbba3e6828b1b81e0800000000000000
+      internalID: -2194630145990218817
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: guardapolvo2_48x48_33
+      rect:
+        serializedVersion: 2
+        x: 157
+        y: 103
+        width: 23
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: edc5803b3d7939760800000000000000
+      internalID: 7463475942980607198
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: guardapolvo2_48x48_34
+      rect:
+        serializedVersion: 2
+        x: 205
+        y: 104
+        width: 23
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3839ef19ba117fbb0800000000000000
+      internalID: -4902430240783035517
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: guardapolvo2_48x48_35
+      rect:
+        serializedVersion: 2
+        x: 253
+        y: 105
+        width: 23
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3943980d14b311b70800000000000000
+      internalID: 8867934295126783123
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: guardapolvo2_48x48_36
+      rect:
+        serializedVersion: 2
+        x: 14
+        y: 55
+        width: 22
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 83ef8952856217040800000000000000
+      internalID: 4643534850825453112
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: guardapolvo2_48x48_37
+      rect:
+        serializedVersion: 2
+        x: 62
+        y: 55
+        width: 22
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 79e9ac9d3fb365c10800000000000000
+      internalID: 2041885399576125079
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: guardapolvo2_48x48_38
+      rect:
+        serializedVersion: 2
+        x: 110
+        y: 55
+        width: 22
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fb030ada4acd03e30800000000000000
+      internalID: 4481324229079347391
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: guardapolvo2_48x48_39
+      rect:
+        serializedVersion: 2
+        x: 158
+        y: 55
+        width: 22
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1a37505f0c629dc20800000000000000
+      internalID: 3231656817801393057
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: guardapolvo2_48x48_40
+      rect:
+        serializedVersion: 2
+        x: 206
+        y: 55
+        width: 22
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 339b43378cddb9e10800000000000000
+      internalID: 2205600295524022579
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: guardapolvo2_48x48_41
+      rect:
+        serializedVersion: 2
+        x: 254
+        y: 55
+        width: 22
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d7d126e36fa7a3c10800000000000000
+      internalID: 2034073379738361213
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: guardapolvo2_48x48_42
+      rect:
+        serializedVersion: 2
+        x: 12
+        y: 7
+        width: 24
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: efaa6bd3a22b3fcf0800000000000000
+      internalID: -219636062317270274
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: guardapolvo2_48x48_43
+      rect:
+        serializedVersion: 2
+        x: 60
+        y: 9
+        width: 24
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 40db506a59eca32d0800000000000000
+      internalID: -3298096634964624124
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: guardapolvo2_48x48_44
+      rect:
+        serializedVersion: 2
+        x: 108
+        y: 8
+        width: 24
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 03d9d6ae728d7bf70800000000000000
+      internalID: 9203062029503274288
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: guardapolvo2_48x48_45
+      rect:
+        serializedVersion: 2
+        x: 156
+        y: 7
+        width: 24
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3fe577efe40ef88a0800000000000000
+      internalID: -6300570723786727693
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: guardapolvo2_48x48_46
+      rect:
+        serializedVersion: 2
+        x: 204
+        y: 9
+        width: 24
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9ca7a5e183c702e00800000000000000
+      internalID: 1017950096254991049
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: guardapolvo2_48x48_47
+      rect:
+        serializedVersion: 2
+        x: 252
+        y: 8
+        width: 24
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 772e83e489d45c2b0800000000000000
+      internalID: -5564956448003661193
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      guardapolvo2_48x48_0: 6888815238449003871
+      guardapolvo2_48x48_1: -4407710800903690911
+      guardapolvo2_48x48_10: -1419968361813335308
+      guardapolvo2_48x48_11: 609307208678392930
+      guardapolvo2_48x48_12: -6717914231445871334
+      guardapolvo2_48x48_13: 769195765140963711
+      guardapolvo2_48x48_14: -6175675773452977846
+      guardapolvo2_48x48_15: 7632593402362702995
+      guardapolvo2_48x48_16: -444179035412998156
+      guardapolvo2_48x48_17: 7865055041590883602
+      guardapolvo2_48x48_18: -7823174343005834999
+      guardapolvo2_48x48_19: -3785338721812610782
+      guardapolvo2_48x48_2: 6379220426677151544
+      guardapolvo2_48x48_20: -8780571772470245340
+      guardapolvo2_48x48_21: -5456682307333160699
+      guardapolvo2_48x48_22: 1807463666521160946
+      guardapolvo2_48x48_23: 7956389576864579829
+      guardapolvo2_48x48_24: 2662605073667495306
+      guardapolvo2_48x48_25: -6062725750496471946
+      guardapolvo2_48x48_26: -2844645326368705831
+      guardapolvo2_48x48_27: 5984311811629016940
+      guardapolvo2_48x48_28: -4243178821517582031
+      guardapolvo2_48x48_29: -4679915277564756584
+      guardapolvo2_48x48_3: -5064978681928007988
+      guardapolvo2_48x48_30: 2355838665746839007
+      guardapolvo2_48x48_31: 581444511497735729
+      guardapolvo2_48x48_32: -2194630145990218817
+      guardapolvo2_48x48_33: 7463475942980607198
+      guardapolvo2_48x48_34: -4902430240783035517
+      guardapolvo2_48x48_35: 8867934295126783123
+      guardapolvo2_48x48_36: 4643534850825453112
+      guardapolvo2_48x48_37: 2041885399576125079
+      guardapolvo2_48x48_38: 4481324229079347391
+      guardapolvo2_48x48_39: 3231656817801393057
+      guardapolvo2_48x48_4: 3849138423673471326
+      guardapolvo2_48x48_40: 2205600295524022579
+      guardapolvo2_48x48_41: 2034073379738361213
+      guardapolvo2_48x48_42: -219636062317270274
+      guardapolvo2_48x48_43: -3298096634964624124
+      guardapolvo2_48x48_44: 9203062029503274288
+      guardapolvo2_48x48_45: -6300570723786727693
+      guardapolvo2_48x48_46: 1017950096254991049
+      guardapolvo2_48x48_47: -5564956448003661193
+      guardapolvo2_48x48_5: 576395456426626776
+      guardapolvo2_48x48_6: 1141454002629354844
+      guardapolvo2_48x48_7: -6568147278197641205
+      guardapolvo2_48x48_8: -649751276622075112
+      guardapolvo2_48x48_9: -2842645526773235743
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

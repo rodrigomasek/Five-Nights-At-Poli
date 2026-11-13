@@ -1,25 +1,25 @@
 fileFormatVersion: 2
-guid: 7fdda2db314762d46aead59b1ae79fb3
+guid: 99296f8ee51d04560bbb003b49d4ccd7
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -5239886663196669727
-    second: walk_south_west_0
+      213: 330952627123643227
+    second: walk_south_east_0
   - first:
-      213: 5063507339365537001
-    second: walk_south_west_1
+      213: 270524434948898975
+    second: walk_south_east_1
   - first:
-      213: 1631474608622607959
-    second: walk_south_west_2
+      213: 6273667265241114577
+    second: walk_south_east_2
   - first:
-      213: -7964187941094022176
-    second: walk_south_west_3
+      213: 5739232112295330834
+    second: walk_south_east_3
   - first:
-      213: -7808929041198215359
-    second: walk_south_west_4
+      213: -6982923830131019960
+    second: walk_south_east_4
   - first:
-      213: -5683352192116551941
-    second: walk_south_west_5
+      213: -7090008756910138813
+    second: walk_south_east_5
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -115,7 +115,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: walk_south_west_0
+      name: walk_south_east_0
       rect:
         serializedVersion: 2
         x: 79
@@ -130,14 +130,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 1e80bd887de2847b0800000000000000
-      internalID: -5239886663196669727
+      spriteID: b53ef2139a7c79400800000000000000
+      internalID: 330952627123643227
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: walk_south_west_1
+      name: walk_south_east_1
       rect:
         serializedVersion: 2
         x: 335
@@ -152,14 +152,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 9e45778f811354640800000000000000
-      internalID: 5063507339365537001
+      spriteID: f9041305a8811c300800000000000000
+      internalID: 270524434948898975
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: walk_south_west_2
+      name: walk_south_east_2
       rect:
         serializedVersion: 2
         x: 591
@@ -174,14 +174,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 75e150b338924a610800000000000000
-      internalID: 1631474608622607959
+      spriteID: 1d761bf632b801750800000000000000
+      internalID: 6273667265241114577
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: walk_south_west_3
+      name: walk_south_east_3
       rect:
         serializedVersion: 2
         x: 847
@@ -196,14 +196,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 0e324ae7345897190800000000000000
-      internalID: -7964187941094022176
+      spriteID: 214c0e8c239d5af40800000000000000
+      internalID: 5739232112295330834
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: walk_south_west_4
+      name: walk_south_east_4
       rect:
         serializedVersion: 2
         x: 1103
@@ -218,14 +218,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 14f0627196c11a390800000000000000
-      internalID: -7808929041198215359
+      spriteID: 84f2e6b06cba71f90800000000000000
+      internalID: -6982923830131019960
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: walk_south_west_5
+      name: walk_south_east_5
       rect:
         serializedVersion: 2
         x: 1359
@@ -240,8 +240,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: bfe847ffa4da021b0800000000000000
-      internalID: -5683352192116551941
+      spriteID: 34a56fd999a3b9d90800000000000000
+      internalID: -7090008756910138813
       vertices: []
       indices: 
       edges: []
@@ -260,12 +260,12 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      walk_south_west_0: -5239886663196669727
-      walk_south_west_1: 5063507339365537001
-      walk_south_west_2: 1631474608622607959
-      walk_south_west_3: -7964187941094022176
-      walk_south_west_4: -7808929041198215359
-      walk_south_west_5: -5683352192116551941
+      walk_south_east_0: 330952627123643227
+      walk_south_east_1: 270524434948898975
+      walk_south_east_2: 6273667265241114577
+      walk_south_east_3: 5739232112295330834
+      walk_south_east_4: -6982923830131019960
+      walk_south_east_5: -7090008756910138813
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
