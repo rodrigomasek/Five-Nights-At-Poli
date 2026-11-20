@@ -1,3 +1,4 @@
+
 using UnityEngine;
 
 public class ChaseMusicController : MonoBehaviour
@@ -17,7 +18,7 @@ public class ChaseMusicController : MonoBehaviour
     public float volumenAmbiente = 0.5f;
 
     [Range(0f, 1f)]
-    public float volumenPersecucion = 1f;
+    public float volumenPersecucion = 0.3f;
 
     [Header("Profesor")]
     public EnemyMovement profesor;
@@ -31,14 +32,13 @@ public class ChaseMusicController : MonoBehaviour
 
     void Start()
     {
-        // Buscar al profesor automáticamente
-        // si no fue asignado desde el Inspector.
+        // Buscar al profesor automáticamente.
         if (profesor == null)
         {
             profesor = FindAnyObjectByType<EnemyMovement>();
         }
 
-        // Comprobar que los audios estén asignados.
+        // Comprobar música ambiental.
         if (musicaAmbiente == null)
         {
             Debug.LogError(
@@ -46,6 +46,7 @@ public class ChaseMusicController : MonoBehaviour
             );
         }
 
+        // Comprobar música de persecución.
         if (musicaPersecucion == null)
         {
             Debug.LogError(
@@ -53,7 +54,7 @@ public class ChaseMusicController : MonoBehaviour
             );
         }
 
-        // Configurar la música ambiental.
+        // Configurar música ambiental.
         if (musicaAmbiente != null)
         {
             musicaAmbiente.playOnAwake = false;
@@ -66,7 +67,7 @@ public class ChaseMusicController : MonoBehaviour
             volumenAmbienteActual = 0f;
         }
 
-        // Configurar la música de persecución.
+        // Configurar música de persecución.
         if (musicaPersecucion != null)
         {
             musicaPersecucion.playOnAwake = false;
@@ -88,7 +89,7 @@ public class ChaseMusicController : MonoBehaviour
         if (profesor == null)
             return;
 
-        // Detectar si el profesor está viendo al jugador.
+        // Detectar si el profesor ve al jugador.
         if (profesor.EstaViendoJugador())
         {
             tiempoDesdeUltimaVision = 0f;
@@ -97,12 +98,8 @@ public class ChaseMusicController : MonoBehaviour
         }
         else
         {
-            // Contar cuánto tiempo pasó desde que
-            // el profesor dejó de ver al jugador.
             tiempoDesdeUltimaVision += Time.deltaTime;
 
-            // Si pasó suficiente tiempo sin verlo,
-            // volver a la música ambiental.
             if (tiempoDesdeUltimaVision >= tiempoMantenerPersecucion)
             {
                 DesactivarPersecucion();

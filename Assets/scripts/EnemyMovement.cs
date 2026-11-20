@@ -1,6 +1,14 @@
+
 using UnityEngine;
 using UnityEngine.AI;
+using System.Collections;
 using System.Collections.Generic;
+
+public enum PisoEscuela
+{
+    Piso1,
+    Piso2
+}
 
 [RequireComponent(typeof(NavMeshAgent))]
 public class EnemyMovement : MonoBehaviour
@@ -16,13 +24,12 @@ public class EnemyMovement : MonoBehaviour
     }
 
     [Header("Movimiento")]
-    public float velocidad = 2f;
+    public float velocidadPatrullaje = 2f;
+    public float velocidadDeteccion = 4f;
 
-    [Header("Patrulla")]
-    public Transform patrolPoint1;
-    public Transform patrolPoint2;
-    public Transform patrolPoint3;
-    public Transform patrolPoint4;
+    [Header("Patrulla por piso")]
+    public List<Transform> puntosPatrullaPiso1 = new List<Transform>();
+    public List<Transform> puntosPatrullaPiso2 = new List<Transform>();
     public float distanciaLlegadaPatrulla = 0.2f;
     public float tiempoEsperaPatrulla = 2f;
 
@@ -36,14 +43,13 @@ public class EnemyMovement : MonoBehaviour
     public float distanciaLlegadaUltimaPosicion = 0.3f;
 
     [Header("Busqueda inteligente")]
-public float radioBusqueda = 3f;
+    public float radioBusqueda = 3f;
 
-[Range(1, 8)]
-public int cantidadPuntosBusqueda = 3;
+    [Range(1, 8)]
+    public int cantidadPuntosBusqueda = 3;
 
-public float tiempoInspeccionPunto = 1.5f;
-
-public int intentosEncontrarPuntoBusqueda = 12;
+    public float tiempoInspeccionPunto = 1.5f;
+    public int intentosEncontrarPuntoBusqueda = 12;
 
     [Header("Captura")]
     public float distanciaParaAtraparlo = 0.8f;
@@ -70,6 +76,22 @@ public int intentosEncontrarPuntoBusqueda = 12;
     public int maximosReintentosRuta = 2;
     public float distanciaMuestreoNavMesh = 2f;
 
+    [Header("Cambio de piso y recuperacion")]
+    public PisoEscuela pisoInicial = PisoEscuela.Piso1;
+    public float distanciaMaximaJugador = 20f;
+    public float distanciaMinimaRecuperacion = 8f;
+    public float distanciaMaximaRecuperacion = 12f;
+    public float demoraCambioPiso = 3f;
+    public float radioValidacionDestinoPiso = 0.75f;
+    public float intervaloComprobacionDistancia = 0.5f;
+    public int intentosRecuperacionDistancia = 25;
+
+    private PisoEscuela pisoProfesor;
+    private PisoEscuela pisoJugador;
+    private bool cambiandoPiso;
+    private float proximaComprobacionDistancia;
+    private Coroutine rutinaCambioPiso;
+
     private NavMeshAgent agent;
     private Collider2D colliderProfesor;
     private Collider2D colliderJugador;
@@ -78,7 +100,7 @@ public int intentosEncontrarPuntoBusqueda = 12;
     private Transform jugador;
     private PlayerMovement playerMovement;
 
-    private readonly List<Transform> puntosPatrulla =
+    private readonly List<Transform> puntosPatrullaActivos =
         new List<Transform>();
 
     private int indicePuntoActual = -1;
@@ -90,19 +112,16 @@ public int intentosEncontrarPuntoBusqueda = 12;
     private EstadoIA estadoActual = EstadoIA.Patrullando;
 
     private float tiempoSinVerJugador;
-    // Sistema de búsqueda inteligente
 
-private Vector3 centroBusqueda;
+    private Vector3 centroBusqueda;
+    private int puntosBusquedaRestantes;
+    private float tiempoInspeccionBusqueda;
+    private bool inspeccionandoBusqueda;
+    private bool primeraInspeccionBusqueda;
 
-private int puntosBusquedaRestantes;
+    private readonly List<Vector3> posicionesInspeccionadas =
+        new List<Vector3>();
 
-private float tiempoInspeccionBusqueda;
-
-private bool inspeccionandoBusqueda;
-private bool primeraInspeccionBusqueda;
-
-private readonly List<Vector3> posicionesInspeccionadas =
-    new List<Vector3>();
     private float tiempoInvestigando;
     private float tiempoBusquedaCamaraActual;
     private float tiempoEsperaActual;
@@ -133,6 +152,9 @@ private readonly List<Vector3> posicionesInspeccionadas =
         agent = GetComponent<NavMeshAgent>();
         colliderProfesor = GetComponent<Collider2D>();
 
+        pisoProfesor = pisoInicial;
+        pisoJugador = pisoInicial;
+
         gameManager = FindAnyObjectByType<GameManager>();
 
         if (agent == null)
@@ -144,7 +166,7 @@ private readonly List<Vector3> posicionesInspeccionadas =
 
         agent.updateRotation = false;
         agent.updateUpAxis = false;
-        agent.speed = velocidad;
+        agent.speed = velocidadPatrullaje;
         agent.stoppingDistance = 0.1f;
         agent.autoBraking = true;
         agent.autoRepath = true;
@@ -184,6 +206,52 @@ private readonly List<Vector3> posicionesInspeccionadas =
     }
 
     // =====================================================
+    // LISTAS DE PATRULLA POR PISO
+    // =====================================================
+
+    void ActualizarPuntosPatrullaDelPiso()
+    {
+        puntosPatrullaActivos.Clear();
+
+        List<Transform> listaOrigen =
+            pisoProfesor == PisoEscuela.Piso1
+            ? puntosPatrullaPiso1
+            : puntosPatrullaPiso2;
+
+        foreach (Transform punto in listaOrigen)
+        {
+            if (punto != null)
+                puntosPatrullaActivos.Add(punto);
+        }
+
+        indicePuntoActual = -1;
+        puntoPatrullaActual = null;
+
+        Debug.Log(
+            "Lista de patrulla actualizada. Piso: " +
+            pisoProfesor +
+            ". Puntos disponibles: " +
+            puntosPatrullaActivos.Count
+        );
+
+        if (puntosPatrullaActivos.Count == 0)
+        {
+            Debug.LogWarning(
+                "No hay puntos de patrulla configurados para " +
+                pisoProfesor
+            );
+        }
+    }
+
+    void InicializarPatrulla()
+    {
+        ActualizarPuntosPatrullaDelPiso();
+
+        if (puntosPatrullaActivos.Count > 0)
+            IrAlSiguientePuntoPatrulla();
+    }
+
+    // =====================================================
     // UPDATE PRINCIPAL
     // =====================================================
 
@@ -198,6 +266,9 @@ private readonly List<Vector3> posicionesInspeccionadas =
         if (Time.timeScale == 0f)
             return;
 
+        if (cambiandoPiso)
+            return;
+
         if (!agent.isOnNavMesh)
         {
             Debug.LogWarning(
@@ -206,9 +277,12 @@ private readonly List<Vector3> posicionesInspeccionadas =
             return;
         }
 
-        agent.speed = velocidad;
+        agent.speed = estadoActual == EstadoIA.Persiguiendo
+    ? velocidadDeteccion
+    : velocidadPatrullaje;
 
-        // Comprobar si el jugador está escondido.
+        if (ComprobarRecuperacionDistancia())
+            return;
 
         if (playerMovement.EstaEscondido())
         {
@@ -217,7 +291,6 @@ private readonly List<Vector3> posicionesInspeccionadas =
             if (vioEntrarAlEscondite)
             {
                 estadoActual = EstadoIA.Persiguiendo;
-
                 ultimaPosicionJugador = jugador.position;
 
                 ActualizarDestinoSiEsNecesario(
@@ -238,13 +311,10 @@ private readonly List<Vector3> posicionesInspeccionadas =
 
             RevisarEsconditeCercano();
             Patrullar();
-
             return;
         }
 
         IgnorarColisionJugador(false);
-
-        // La visión siempre tiene prioridad.
 
         if (EstaViendoJugador())
         {
@@ -263,20 +333,17 @@ private readonly List<Vector3> posicionesInspeccionadas =
             return;
         }
 
-        // Si lo pierde, comienza la búsqueda.
-
         if (estadoActual == EstadoIA.Persiguiendo)
-{
-    IniciarBusquedaInteligente(ultimaPosicionJugador);
+        {
+            IniciarBusquedaInteligente(ultimaPosicionJugador);
 
-    Debug.Log(
-        "El profesor perdió al jugador. Comienza una búsqueda inteligente."
-    );
+            Debug.Log(
+                "El profesor perdió al jugador. " +
+                "Comienza una búsqueda inteligente."
+            );
 
-    return;
-}
-
-        // Revisar escondite antes de continuar otras investigaciones.
+            return;
+        }
 
         if (esconditeRevisando != null)
         {
@@ -285,51 +352,35 @@ private readonly List<Vector3> posicionesInspeccionadas =
             return;
         }
 
-        // Detectar ruido solamente cuando comienza un nuevo evento.
-
         bool ruidoActual =
             playerMovement.EsMomentoDeHacerRuido();
 
         if (ruidoActual && !ruidoAnterior)
-        {
             EscucharRuido();
-        }
 
         ruidoAnterior = ruidoActual;
-
-        // Ejecutar comportamiento actual.
 
         switch (estadoActual)
         {
             case EstadoIA.Patrullando:
-
                 RevisarEsconditeCercano();
                 Patrullar();
-
                 break;
 
             case EstadoIA.Buscando:
-
                 BuscarUltimaPosicion();
-
                 break;
 
             case EstadoIA.InvestigandoRuido:
-
                 InvestigarRuido();
-
                 break;
 
             case EstadoIA.InvestigandoCamara:
-
                 InvestigarCamara();
-
                 break;
 
             case EstadoIA.RevisandoEscondite:
-
                 RevisarEsconditeEnDestino();
-
                 break;
         }
 
@@ -337,41 +388,355 @@ private readonly List<Vector3> posicionesInspeccionadas =
     }
 
     // =====================================================
-    // PATRULLA
+    // CAMBIO DE PISO Y RECUPERACION POR DISTANCIA
     // =====================================================
 
-    void InicializarPatrulla()
+    // Se conserva la firma de tres parámetros para que
+    // otros scripts que ya la utilizan sigan siendo compatibles.
+    // El profesor cambia de piso siempre que el jugador
+    // se encuentre en un piso diferente.
+    public void NotificarCambioPisoJugador(
+        PisoEscuela pisoDestino,
+        Transform destinoProfesor,
+        bool profesorLoVeia)
     {
-        puntosPatrulla.Clear();
+        pisoJugador = pisoDestino;
 
-        if (patrolPoint1 != null)
-            puntosPatrulla.Add(patrolPoint1);
+        if (cambiandoPiso || pisoProfesor == pisoDestino)
+            return;
 
-        if (patrolPoint2 != null)
-            puntosPatrulla.Add(patrolPoint2);
-
-        if (patrolPoint3 != null)
-            puntosPatrulla.Add(patrolPoint3);
-
-        if (patrolPoint4 != null)
-            puntosPatrulla.Add(patrolPoint4);
-
-        if (puntosPatrulla.Count == 0)
+        if (destinoProfesor == null)
         {
             Debug.LogError(
-                "No hay puntos de patrulla asignados."
+                "TeleportZone no tiene asignado Destino Profesor."
             );
             return;
         }
 
-        indicePuntoActual = -1;
+        if (rutinaCambioPiso != null)
+            StopCoroutine(rutinaCambioPiso);
 
-        IrAlSiguientePuntoPatrulla();
+        rutinaCambioPiso = StartCoroutine(
+            CambiarPisoConDemora(pisoDestino, destinoProfesor)
+        );
     }
+
+    IEnumerator CambiarPisoConDemora(
+        PisoEscuela pisoDestino,
+        Transform destinoProfesor)
+    {
+        if (agent == null || !agent.isOnNavMesh)
+        {
+            Debug.LogError(
+                "No se puede iniciar el cambio de piso: " +
+                "el profesor no está sobre un NavMesh."
+            );
+
+            rutinaCambioPiso = null;
+            yield break;
+        }
+
+        EstadoIA estadoAnterior = estadoActual;
+        Vector3 destinoAnterior = destinoActual;
+        bool teniaDestinoAnterior = destinoAsignado;
+
+        cambiandoPiso = true;
+
+        agent.isStopped = true;
+        agent.ResetPath();
+        destinoAsignado = false;
+
+        SpriteRenderer[] renderers =
+            GetComponentsInChildren<SpriteRenderer>(true);
+
+        bool[] renderersEstabanActivos =
+            new bool[renderers.Length];
+
+        for (int i = 0; i < renderers.Length; i++)
+        {
+            renderersEstabanActivos[i] = renderers[i].enabled;
+            renderers[i].enabled = false;
+        }
+
+        bool colliderEstabaActivo =
+            colliderProfesor != null && colliderProfesor.enabled;
+
+        if (colliderProfesor != null)
+            colliderProfesor.enabled = false;
+
+        yield return new WaitForSeconds(demoraCambioPiso);
+
+        if (destinoProfesor == null ||
+            agent == null ||
+            !agent.enabled)
+        {
+            Debug.LogError(
+                "Se canceló el cambio de piso: " +
+                "falta el destino o el NavMeshAgent."
+            );
+
+            RestaurarVisibilidadProfesor(
+                renderers,
+                renderersEstabanActivos,
+                colliderEstabaActivo
+            );
+
+            if (agent != null)
+                agent.isStopped = false;
+
+            RestaurarComportamientoAnterior(
+                estadoAnterior,
+                destinoAnterior,
+                teniaDestinoAnterior
+            );
+
+            cambiandoPiso = false;
+            rutinaCambioPiso = null;
+            yield break;
+        }
+
+        NavMeshQueryFilter filtro = new NavMeshQueryFilter
+        {
+            agentTypeID = agent.agentTypeID,
+            areaMask = agent.areaMask
+        };
+
+        NavMeshHit hit;
+
+        bool encontroNavMesh = NavMesh.SamplePosition(
+            destinoProfesor.position,
+            out hit,
+            radioValidacionDestinoPiso,
+            filtro
+        );
+
+        if (!encontroNavMesh ||
+            Vector3.Distance(
+                hit.position,
+                destinoProfesor.position
+            ) > radioValidacionDestinoPiso)
+        {
+            Debug.LogError(
+                "El destino del profesor no está sobre el NavMesh. " +
+                "Revisá Destino Profesor en TeleportZone."
+            );
+
+            RestaurarVisibilidadProfesor(
+                renderers,
+                renderersEstabanActivos,
+                colliderEstabaActivo
+            );
+
+            agent.isStopped = false;
+
+            RestaurarComportamientoAnterior(
+                estadoAnterior,
+                destinoAnterior,
+                teniaDestinoAnterior
+            );
+
+            cambiandoPiso = false;
+            rutinaCambioPiso = null;
+            yield break;
+        }
+
+        bool trasladoCorrecto = agent.Warp(hit.position);
+
+        if (!trasladoCorrecto)
+        {
+            Debug.LogError(
+                "NavMeshAgent.Warp no pudo trasladar al profesor."
+            );
+
+            RestaurarVisibilidadProfesor(
+                renderers,
+                renderersEstabanActivos,
+                colliderEstabaActivo
+            );
+
+            agent.isStopped = false;
+
+            RestaurarComportamientoAnterior(
+                estadoAnterior,
+                destinoAnterior,
+                teniaDestinoAnterior
+            );
+
+            cambiandoPiso = false;
+            rutinaCambioPiso = null;
+            yield break;
+        }
+
+        pisoProfesor = pisoDestino;
+
+        // Cambiar la lista de patrulla al nuevo piso.
+        ActualizarPuntosPatrullaDelPiso();
+
+        agent.ResetPath();
+        agent.isStopped = false;
+
+        RestaurarVisibilidadProfesor(
+            renderers,
+            renderersEstabanActivos,
+            colliderEstabaActivo
+        );
+
+        ultimaPosicionJugador = jugador.position;
+        esperandoPatrulla = false;
+        esconditeRevisando = null;
+        esconditeCercano = null;
+        destinoAsignado = false;
+
+        if (!playerMovement.EstaEscondido())
+        {
+            estadoActual = EstadoIA.Persiguiendo;
+            AsignarDestino(jugador.position);
+        }
+        else
+        {
+            estadoActual = EstadoIA.Buscando;
+            IniciarBusquedaInteligente(ultimaPosicionJugador);
+        }
+
+        Debug.Log(
+            "Profesor cambió correctamente al " + pisoDestino +
+            ". Ahora tiene " + puntosPatrullaActivos.Count +
+            " puntos de patrulla disponibles."
+        );
+
+        cambiandoPiso = false;
+        rutinaCambioPiso = null;
+    }
+
+    void RestaurarComportamientoAnterior(
+        EstadoIA estadoAnterior,
+        Vector3 destinoAnterior,
+        bool teniaDestinoAnterior)
+    {
+        estadoActual = estadoAnterior;
+        destinoAsignado = false;
+
+        if (teniaDestinoAnterior)
+            AsignarDestino(destinoAnterior, false);
+    }
+
+    void RestaurarVisibilidadProfesor(
+        SpriteRenderer[] renderers,
+        bool[] estadosOriginales,
+        bool colliderEstabaActivo)
+    {
+        for (int i = 0; i < renderers.Length; i++)
+        {
+            if (renderers[i] != null)
+                renderers[i].enabled = estadosOriginales[i];
+        }
+
+        if (colliderProfesor != null)
+            colliderProfesor.enabled = colliderEstabaActivo;
+    }
+
+    bool ComprobarRecuperacionDistancia()
+    {
+        if (cambiandoPiso ||
+            playerMovement.EstaEscondido() ||
+            pisoProfesor != pisoJugador ||
+            Time.time < proximaComprobacionDistancia)
+            return false;
+
+        proximaComprobacionDistancia =
+            Time.time + intervaloComprobacionDistancia;
+
+        float distancia = Vector2.Distance(
+            transform.position,
+            jugador.position
+        );
+
+        if (distancia <= distanciaMaximaJugador)
+            return false;
+
+        if (!agent.isOnNavMesh)
+            return false;
+
+        NavMeshQueryFilter filtro = new NavMeshQueryFilter
+        {
+            agentTypeID = agent.agentTypeID,
+            areaMask = agent.areaMask
+        };
+
+        for (int i = 0; i < intentosRecuperacionDistancia; i++)
+        {
+            Vector2 direccion =
+                Random.insideUnitCircle.normalized;
+
+            float radio = Random.Range(
+                distanciaMinimaRecuperacion,
+                distanciaMaximaRecuperacion
+            );
+
+            Vector3 candidato = jugador.position +
+                new Vector3(
+                    direccion.x * radio,
+                    direccion.y * radio,
+                    0f
+                );
+
+            NavMeshHit hit;
+
+            if (!NavMesh.SamplePosition(
+                candidato,
+                out hit,
+                radioValidacionDestinoPiso,
+                filtro))
+                continue;
+
+            float distanciaAlJugador = Vector2.Distance(
+                hit.position,
+                jugador.position
+            );
+
+            if (distanciaAlJugador < distanciaMinimaRecuperacion ||
+                distanciaAlJugador > distanciaMaximaRecuperacion)
+                continue;
+
+            if (!agent.Warp(hit.position))
+                continue;
+
+            agent.ResetPath();
+            agent.isStopped = false;
+
+            destinoAsignado = false;
+            tiempoSinMovimiento = 0f;
+            tiempoReintentoActual = 0f;
+
+            ultimaPosicionJugador = jugador.position;
+            estadoActual = EstadoIA.Persiguiendo;
+            esperandoPatrulla = false;
+
+            AsignarDestino(jugador.position);
+
+            Debug.Log(
+                "Profesor recuperado por distancia. Nueva distancia: " +
+                distanciaAlJugador.ToString("F1")
+            );
+
+            return true;
+        }
+
+        Debug.LogWarning(
+            "El profesor superó la distancia máxima, pero no " +
+            "encontró una posición válida de recuperación."
+        );
+
+        return false;
+    }
+
+    // =====================================================
+    // PATRULLA
+    // =====================================================
 
     void Patrullar()
     {
-        if (puntosPatrulla.Count == 0)
+        if (puntosPatrullaActivos.Count == 0)
             return;
 
         if (puntoPatrullaActual == null)
@@ -387,7 +752,6 @@ private readonly List<Vector3> posicionesInspeccionadas =
             if (tiempoEsperaActual >= tiempoEsperaPatrulla)
             {
                 esperandoPatrulla = false;
-
                 IrAlSiguientePuntoPatrulla();
             }
 
@@ -397,7 +761,6 @@ private readonly List<Vector3> posicionesInspeccionadas =
         if (LlegóAlDestino())
         {
             esperandoPatrulla = true;
-
             tiempoEsperaActual = 0f;
 
             agent.isStopped = true;
@@ -410,19 +773,20 @@ private readonly List<Vector3> posicionesInspeccionadas =
 
     void IrAlSiguientePuntoPatrulla()
     {
-        if (puntosPatrulla.Count == 0)
+        if (puntosPatrullaActivos.Count == 0)
             return;
 
         int nuevoIndice;
 
-        if (puntosPatrulla.Count == 1)
+        if (puntosPatrullaActivos.Count == 1)
         {
             nuevoIndice = 0;
         }
         else
         {
             nuevoIndice = Random.Range(
-                0, puntosPatrulla.Count
+                0,
+                puntosPatrullaActivos.Count
             );
 
             int intentos = 0;
@@ -431,7 +795,8 @@ private readonly List<Vector3> posicionesInspeccionadas =
                    intentos < 20)
             {
                 nuevoIndice = Random.Range(
-                    0, puntosPatrulla.Count
+                    0,
+                    puntosPatrullaActivos.Count
                 );
 
                 intentos++;
@@ -441,7 +806,7 @@ private readonly List<Vector3> posicionesInspeccionadas =
         indicePuntoActual = nuevoIndice;
 
         puntoPatrullaActual =
-            puntosPatrulla[indicePuntoActual];
+            puntosPatrullaActivos[indicePuntoActual];
 
         esperandoPatrulla = false;
         tiempoEsperaActual = 0f;
@@ -458,8 +823,12 @@ private readonly List<Vector3> posicionesInspeccionadas =
         else
         {
             Debug.LogWarning(
-                "No se pudo alcanzar el punto de patrulla."
+                "No se pudo alcanzar el punto de patrulla: " +
+                puntoPatrullaActual.name
             );
+
+            puntoPatrullaActual = null;
+            destinoAsignado = false;
         }
     }
 
@@ -544,7 +913,8 @@ private readonly List<Vector3> posicionesInspeccionadas =
     {
         if (!destinoAsignado ||
             Vector3.Distance(
-                destinoActual, destino
+                destinoActual,
+                destino
             ) > distanciaMinima)
         {
             AsignarDestino(destino);
@@ -617,7 +987,6 @@ private readonly List<Vector3> posicionesInspeccionadas =
             if (tiempoReintentoActual >= tiempoReintentoRuta)
             {
                 tiempoReintentoActual = 0f;
-
                 ReintentarMovimiento();
             }
         }
@@ -637,8 +1006,6 @@ private readonly List<Vector3> posicionesInspeccionadas =
             agent.isStopped = false;
             agent.ResetPath();
 
-            // IMPORTANTE: no reiniciar el contador de reintentos.
-
             AsignarDestino(destinoActual, false);
         }
         else
@@ -655,6 +1022,7 @@ private readonly List<Vector3> posicionesInspeccionadas =
 
             if (estadoActual == EstadoIA.Patrullando)
             {
+                puntoPatrullaActual = null;
                 IrAlSiguientePuntoPatrulla();
             }
             else if (estadoActual == EstadoIA.Persiguiendo)
@@ -664,202 +1032,171 @@ private readonly List<Vector3> posicionesInspeccionadas =
             else
             {
                 estadoActual = EstadoIA.Patrullando;
-
                 esconditeRevisando = null;
-
+                puntoPatrullaActual = null;
                 IrAlSiguientePuntoPatrulla();
             }
         }
     }
 
     // =====================================================
-    // BUSQUEDA DEL JUGADOR
+    // BUSQUEDA INTELIGENTE
     // =====================================================
 
-    // =====================================================
-// BUSQUEDA INTELIGENTE
-// =====================================================
-
-void IniciarBusquedaInteligente(Vector3 posicion)
-{
-    estadoActual = EstadoIA.Buscando;
-
-    centroBusqueda = posicion;
-
-    puntosBusquedaRestantes =
-        Mathf.Max(1, cantidadPuntosBusqueda);
-
-    tiempoInspeccionBusqueda = 0f;
-
-    inspeccionandoBusqueda = false;
-    primeraInspeccionBusqueda = true;
-
-    posicionesInspeccionadas.Clear();
-
-    posicionesInspeccionadas.Add(posicion);
-
-    tiempoSinMovimiento = 0f;
-
-    esperandoPatrulla = false;
-
-    if (!AsignarDestino(centroBusqueda))
+    void IniciarBusquedaInteligente(Vector3 posicion)
     {
-        Debug.LogWarning(
-            "No se pudo alcanzar la última posición del jugador. " +
-            "Buscando una posición cercana."
-        );
+        estadoActual = EstadoIA.Buscando;
 
-        if (!AsignarSiguientePuntoBusqueda())
-        {
-            FinalizarBusquedaInteligente();
-        }
-    }
-}
+        centroBusqueda = posicion;
 
-void BuscarUltimaPosicion()
-{
-    // Si está inspeccionando una zona, espera.
+        puntosBusquedaRestantes =
+            Mathf.Max(1, cantidadPuntosBusqueda);
 
-    if (inspeccionandoBusqueda)
-    {
-        tiempoInspeccionBusqueda += Time.deltaTime;
-
-        float tiempoNecesario = primeraInspeccionBusqueda
-            ? tiempoBusqueda
-            : tiempoInspeccionPunto;
-
-        if (tiempoInspeccionBusqueda < tiempoNecesario)
-            return;
+        tiempoInspeccionBusqueda = 0f;
 
         inspeccionandoBusqueda = false;
+        primeraInspeccionBusqueda = true;
 
-        primeraInspeccionBusqueda = false;
+        posicionesInspeccionadas.Clear();
+        posicionesInspeccionadas.Add(posicion);
 
-        tiempoInspeccionBusqueda = 0f;
+        tiempoSinMovimiento = 0f;
+        esperandoPatrulla = false;
 
-        // Todavía quedan zonas por revisar.
-
-        if (puntosBusquedaRestantes > 0)
+        if (!AsignarDestino(centroBusqueda))
         {
-            puntosBusquedaRestantes--;
-
-            if (AsignarSiguientePuntoBusqueda())
-                return;
-        }
-
-        // No encontró al jugador.
-
-        FinalizarBusquedaInteligente();
-
-        return;
-    }
-
-    // Comprobar llegada al destino.
-
-    if (LlegóAlDestino())
-    {
-        agent.isStopped = true;
-
-        inspeccionandoBusqueda = true;
-
-        tiempoInspeccionBusqueda = 0f;
-
-        Debug.Log(
-            "Profesor está inspeccionando una zona de búsqueda."
-        );
-    }
-}
-
-bool AsignarSiguientePuntoBusqueda()
-{
-    for (
-        int i = 0;
-        i < intentosEncontrarPuntoBusqueda;
-        i++
-    )
-    {
-        // Elegir una posición aleatoria alrededor
-        // de la última ubicación conocida.
-
-        Vector2 desplazamiento =
-            Random.insideUnitCircle * radioBusqueda;
-
-        Vector3 candidato = centroBusqueda +
-            new Vector3(
-                desplazamiento.x,
-                desplazamiento.y,
-                0f
+            Debug.LogWarning(
+                "No se pudo alcanzar la última posición del jugador. " +
+                "Buscando una posición cercana."
             );
 
-        NavMeshHit hit;
+            if (!AsignarSiguientePuntoBusqueda())
+                FinalizarBusquedaInteligente();
+        }
+    }
 
-        if (!NavMesh.SamplePosition(
-            candidato,
-            out hit,
-            distanciaMuestreoNavMesh,
-            NavMesh.AllAreas))
+    void BuscarUltimaPosicion()
+    {
+        if (inspeccionandoBusqueda)
         {
-            continue;
+            tiempoInspeccionBusqueda += Time.deltaTime;
+
+            float tiempoNecesario = primeraInspeccionBusqueda
+                ? tiempoBusqueda
+                : tiempoInspeccionPunto;
+
+            if (tiempoInspeccionBusqueda < tiempoNecesario)
+                return;
+
+            inspeccionandoBusqueda = false;
+            primeraInspeccionBusqueda = false;
+            tiempoInspeccionBusqueda = 0f;
+
+            if (puntosBusquedaRestantes > 0)
+            {
+                puntosBusquedaRestantes--;
+
+                if (AsignarSiguientePuntoBusqueda())
+                    return;
+            }
+
+            FinalizarBusquedaInteligente();
+            return;
         }
 
-        // Evitar revisar repetidamente el mismo lugar.
-
-        bool repetido = false;
-
-        foreach (Vector3 posicion in posicionesInspeccionadas)
+        if (LlegóAlDestino())
         {
-            if (Vector3.Distance(
-                posicion,
-                hit.position
-            ) < 0.8f)
+            agent.isStopped = true;
+
+            inspeccionandoBusqueda = true;
+            tiempoInspeccionBusqueda = 0f;
+
+            Debug.Log(
+                "Profesor está inspeccionando una zona de búsqueda."
+            );
+        }
+    }
+
+    bool AsignarSiguientePuntoBusqueda()
+    {
+        for (
+            int i = 0;
+            i < intentosEncontrarPuntoBusqueda;
+            i++
+        )
+        {
+            Vector2 desplazamiento =
+                Random.insideUnitCircle * radioBusqueda;
+
+            Vector3 candidato = centroBusqueda +
+                new Vector3(
+                    desplazamiento.x,
+                    desplazamiento.y,
+                    0f
+                );
+
+            NavMeshHit hit;
+
+            if (!NavMesh.SamplePosition(
+                candidato,
+                out hit,
+                distanciaMuestreoNavMesh,
+                NavMesh.AllAreas))
+                continue;
+
+            bool repetido = false;
+
+            foreach (Vector3 posicion in posicionesInspeccionadas)
             {
-                repetido = true;
-                break;
+                if (Vector3.Distance(
+                    posicion,
+                    hit.position
+                ) < 0.8f)
+                {
+                    repetido = true;
+                    break;
+                }
+            }
+
+            if (repetido)
+                continue;
+
+            if (AsignarDestino(hit.position))
+            {
+                posicionesInspeccionadas.Add(hit.position);
+
+                Debug.Log(
+                    "Profesor investigará otra zona cercana: " +
+                    hit.position
+                );
+
+                return true;
             }
         }
 
-        if (repetido)
-            continue;
+        Debug.LogWarning(
+            "No se encontraron más puntos de búsqueda alcanzables."
+        );
 
-        // Comprobar que realmente pueda llegar.
-
-        if (AsignarDestino(hit.position))
-        {
-            posicionesInspeccionadas.Add(hit.position);
-
-            Debug.Log(
-                "Profesor investigará otra zona cercana: " +
-                hit.position
-            );
-
-            return true;
-        }
+        return false;
     }
 
-    Debug.LogWarning(
-        "No se encontraron más puntos de búsqueda alcanzables."
-    );
+    void FinalizarBusquedaInteligente()
+    {
+        Debug.Log(
+            "El profesor terminó de inspeccionar la zona. " +
+            "Retoma su patrulla."
+        );
 
-    return false;
-}
+        inspeccionandoBusqueda = false;
+        posicionesInspeccionadas.Clear();
 
-void FinalizarBusquedaInteligente()
-{
-    Debug.Log(
-        "El profesor terminó de inspeccionar la zona. " +
-        "Retoma su patrulla."
-    );
+        estadoActual = EstadoIA.Patrullando;
+        destinoAsignado = false;
+        puntoPatrullaActual = null;
 
-    inspeccionandoBusqueda = false;
-
-    posicionesInspeccionadas.Clear();
-
-    estadoActual = EstadoIA.Patrullando;
-
-    destinoAsignado = false;
-
-    IrAlSiguientePuntoPatrulla();
-}
+        IrAlSiguientePuntoPatrulla();
+    }
 
     // =====================================================
     // CAMARAS
@@ -886,9 +1223,7 @@ void FinalizarBusquedaInteligente()
             estadoActual != EstadoIA.InvestigandoCamara;
 
         ultimaPosicionJugador = posicionDetectada;
-
         estadoActual = EstadoIA.InvestigandoCamara;
-
         esperandoPatrulla = false;
 
         if (nuevaInvestigacion)
@@ -922,6 +1257,7 @@ void FinalizarBusquedaInteligente()
                 );
 
                 estadoActual = EstadoIA.Patrullando;
+                puntoPatrullaActual = null;
 
                 IrAlSiguientePuntoPatrulla();
             }
@@ -937,11 +1273,9 @@ void FinalizarBusquedaInteligente()
         if (EstaViendoJugador())
         {
             vioEntrarAlEscondite = true;
-
             ultimaPosicionJugador = jugador.position;
 
             estadoActual = EstadoIA.Persiguiendo;
-
             esperandoPatrulla = false;
 
             esconditeRevisando = null;
@@ -1041,11 +1375,9 @@ void FinalizarBusquedaInteligente()
             );
 
             esconditeRevisando = encontrado;
-
             ultimoEsconditeRevisado = encontrado;
 
             estadoActual = EstadoIA.RevisandoEscondite;
-
             esperandoPatrulla = false;
 
             if (!AsignarDestino(encontrado.transform.position))
@@ -1055,7 +1387,6 @@ void FinalizarBusquedaInteligente()
                 );
 
                 esconditeRevisando = null;
-
                 estadoActual = EstadoIA.Patrullando;
             }
         }
@@ -1072,9 +1403,9 @@ void FinalizarBusquedaInteligente()
         if (esconditeRevisando == null)
         {
             estadoActual = EstadoIA.Patrullando;
+            puntoPatrullaActual = null;
 
             IrAlSiguientePuntoPatrulla();
-
             return;
         }
 
@@ -1092,7 +1423,6 @@ void FinalizarBusquedaInteligente()
             );
 
             AtraparJugador();
-
             return;
         }
 
@@ -1106,6 +1436,7 @@ void FinalizarBusquedaInteligente()
         tiempoBloqueoEscondite = Time.time + 2f;
 
         estadoActual = EstadoIA.Patrullando;
+        puntoPatrullaActual = null;
 
         IrAlSiguientePuntoPatrulla();
     }
@@ -1232,9 +1563,7 @@ void FinalizarBusquedaInteligente()
         ultimaPosicionJugador = jugador.position;
 
         estadoActual = EstadoIA.InvestigandoRuido;
-
         esperandoPatrulla = false;
-
         tiempoInvestigando = 0f;
 
         if (AsignarDestino(ultimaPosicionJugador))
@@ -1258,6 +1587,7 @@ void FinalizarBusquedaInteligente()
                 );
 
                 estadoActual = EstadoIA.Patrullando;
+                puntoPatrullaActual = null;
 
                 IrAlSiguientePuntoPatrulla();
             }

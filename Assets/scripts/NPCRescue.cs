@@ -1,3 +1,4 @@
+
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -13,17 +14,28 @@ public class NPCRescue : MonoBehaviour
     [Header("Interfaz")]
     public InteractionUI interactionUI;
 
+    [Header("Sprites")]
+    public SpriteRenderer spriteRendererEstudiante;
+    public Sprite spriteAtado;
+    public Sprite spriteLibre;
+
     private ObjectiveManager objectiveManager;
 
     private bool jugadorCerca = false;
     private bool liberado = false;
+
     private float progresoLiberacion = 0f;
+
+    // =====================================================
+    // INICIALIZACION
+    // =====================================================
 
     void Start()
     {
         if (interactionUI == null)
         {
-            interactionUI = FindFirstObjectByType<InteractionUI>();
+            interactionUI =
+                FindFirstObjectByType<InteractionUI>();
         }
 
         objectiveManager =
@@ -32,10 +44,47 @@ public class NPCRescue : MonoBehaviour
         if (objectiveManager == null)
         {
             Debug.LogError(
-                "NPCRescue: no se encontró ObjectiveManager."
+                name + ": no se encontró ObjectiveManager."
+            );
+        }
+
+        // Buscar SpriteRenderer automáticamente
+        if (spriteRendererEstudiante == null)
+        {
+            spriteRendererEstudiante =
+                GetComponentInChildren<SpriteRenderer>(true);
+        }
+
+        if (spriteRendererEstudiante == null)
+        {
+            Debug.LogError(
+                name + ": no se encontró SpriteRenderer."
+            );
+        }
+        else if (spriteAtado != null)
+        {
+            // La estudiante comienza atada
+            spriteRendererEstudiante.sprite = spriteAtado;
+        }
+
+        if (spriteAtado == null || spriteLibre == null)
+        {
+            Debug.LogWarning(
+                name + ": faltan asignar los sprites."
+            );
+        }
+
+        if (destinoSalida == null)
+        {
+            Debug.LogError(
+                name + ": no tiene asignado Destino Salida."
             );
         }
     }
+
+    // =====================================================
+    // UPDATE
+    // =====================================================
 
     void Update()
     {
@@ -80,6 +129,10 @@ public class NPCRescue : MonoBehaviour
         }
     }
 
+    // =====================================================
+    // DETECCION DEL JUGADOR
+    // =====================================================
+
     void OnTriggerEnter2D(Collider2D other)
     {
         DetectarJugador(other);
@@ -99,7 +152,9 @@ public class NPCRescue : MonoBehaviour
         {
             jugadorCerca = true;
 
-            Debug.Log("Jugador detectado cerca de " + name);
+            Debug.Log(
+                "Jugador detectado cerca de " + name
+            );
 
             if (interactionUI != null)
             {
@@ -124,8 +179,15 @@ public class NPCRescue : MonoBehaviour
         }
     }
 
+    // =====================================================
+    // LIBERAR ESTUDIANTE
+    // =====================================================
+
     void LiberarNPC()
     {
+        if (liberado)
+            return;
+
         if (destinoSalida == null)
         {
             Debug.LogError(
@@ -134,14 +196,28 @@ public class NPCRescue : MonoBehaviour
             return;
         }
 
+        if (spriteRendererEstudiante == null ||
+            spriteLibre == null)
+        {
+            Debug.LogError(
+                name + ": no se puede cambiar al sprite libre."
+            );
+            return;
+        }
+
+        // Evitar que vuelva a liberarse
         liberado = true;
 
+        // Cambiar apariencia
+        spriteRendererEstudiante.sprite = spriteLibre;
+
+        // Trasladar a la salida
         transform.position = destinoSalida.position;
 
         progresoLiberacion = 0f;
         jugadorCerca = false;
 
-        // COMPLETAR OBJETIVO
+        // Completar objetivo
         if (objectiveManager != null)
         {
             objectiveManager.CompletarObjetivoRescatarNPC();
@@ -154,8 +230,14 @@ public class NPCRescue : MonoBehaviour
             );
         }
 
-        Debug.Log(name + " fue rescatado.");
+        Debug.Log(
+            name + " fue rescatado y trasladado a la salida."
+        );
     }
+
+    // =====================================================
+    // CONSULTA DE ESTADO
+    // =====================================================
 
     public bool EstaLiberado()
     {

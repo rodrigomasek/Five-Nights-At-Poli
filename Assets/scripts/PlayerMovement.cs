@@ -26,6 +26,11 @@ public class PlayerMovement : MonoBehaviour
     public float intervaloRuidoCorriendo = 0.35f;
     public float intervaloRuidoAgachado = 1.5f;
 
+    [Header("Animaciones")]
+    private Animator animator;
+
+    private Vector2 ultimaDireccion = new Vector2(0f, -1f);
+
     private Rigidbody2D rb;
     private BoxCollider2D boxCollider;
 
@@ -33,11 +38,43 @@ public class PlayerMovement : MonoBehaviour
 
     public float staminaActual;
     public float StaminaMaxima => staminaMaxima;
+
     private bool corriendo;
     private bool agachado;
 
     private float alturaColliderNormal;
     private float temporizadorRuido;
+
+    // =========================
+    // VISUAL DEL JUGADOR
+    // =========================
+
+    private SpriteRenderer[] spritesDelJugador;
+
+    private void Awake()
+    {
+        spritesDelJugador =
+            GetComponentsInChildren<SpriteRenderer>(true);
+
+        animator =
+            GetComponentInChildren<Animator>(true);
+    }
+
+    public void OcultarVisual()
+    {
+        foreach (SpriteRenderer sprite in spritesDelJugador)
+        {
+            sprite.enabled = false;
+        }
+    }
+
+    public void MostrarVisual()
+    {
+        foreach (SpriteRenderer sprite in spritesDelJugador)
+        {
+            sprite.enabled = true;
+        }
+    }
 
     // =========================
     // LLAVE
@@ -87,17 +124,24 @@ public class PlayerMovement : MonoBehaviour
             rb.linearVelocity = Vector2.zero;
             rb.angularVelocity = 0f;
 
-            Debug.Log("Jugador se escondió.");
+            OcultarVisual();
+
+            Debug.Log(
+                "Jugador se escondió y desapareció visualmente."
+            );
         }
         else
         {
-            rb.constraints =
-                restriccionesNormales;
+            rb.constraints = restriccionesNormales;
 
             rb.linearVelocity = Vector2.zero;
             rb.angularVelocity = 0f;
 
-            Debug.Log("Jugador salió del escondite.");
+            MostrarVisual();
+
+            Debug.Log(
+                "Jugador salió del escondite y volvió a aparecer."
+            );
         }
     }
 
@@ -113,6 +157,29 @@ public class PlayerMovement : MonoBehaviour
     public bool EstaCorriendo()
     {
         return corriendo;
+    }
+
+    // =========================
+    // ANIMACIONES
+    // =========================
+
+    private void ActualizarAnimacion()
+    {
+        if (animator == null)
+            return;
+
+        if (movimiento.sqrMagnitude > 0.01f)
+        {
+            ultimaDireccion = movimiento.normalized;
+        }
+
+        animator.SetFloat("MoveX", ultimaDireccion.x);
+        animator.SetFloat("MoveY", ultimaDireccion.y);
+
+        animator.SetFloat(
+            "Speed",
+            movimiento.sqrMagnitude
+        );
     }
 
     // =========================
@@ -186,23 +253,31 @@ public class PlayerMovement : MonoBehaviour
 
     void Start()
     {
-        rb =
-            GetComponent<Rigidbody2D>();
+        rb = GetComponent<Rigidbody2D>();
 
-        boxCollider =
-            GetComponent<BoxCollider2D>();
+        boxCollider = GetComponent<BoxCollider2D>();
 
-        staminaActual =
-            staminaMaxima;
+        staminaActual = staminaMaxima;
 
         alturaColliderNormal =
             boxCollider.size.y;
 
-        temporizadorRuido =
-            0f;
+        temporizadorRuido = 0f;
 
-        restriccionesNormales =
-            rb.constraints;
+        restriccionesNormales = rb.constraints;
+
+        if (animator != null)
+        {
+            // Dirección inicial: sur.
+            animator.SetFloat("MoveX", 0f);
+            animator.SetFloat("MoveY", -1f);
+        }
+        else
+        {
+            Debug.LogError(
+                "PlayerMovement: no se encontró un Animator en el jugador o sus hijos."
+            );
+        }
     }
 
     // =========================
@@ -249,8 +324,13 @@ public class PlayerMovement : MonoBehaviour
             movimiento.x -= 1;
         }
 
-        movimiento =
-            movimiento.normalized;
+        movimiento = movimiento.normalized;
+
+        // =========================
+        // ACTUALIZAR ANIMACION
+        // =========================
+
+        ActualizarAnimacion();
 
         // =========================
         // AGACHARSE
@@ -282,8 +362,7 @@ public class PlayerMovement : MonoBehaviour
                     alturaColliderNormal
                 );
 
-            boxCollider.offset =
-                Vector2.zero;
+            boxCollider.offset = Vector2.zero;
         }
 
         // =========================
@@ -318,17 +397,15 @@ public class PlayerMovement : MonoBehaviour
                 recuperacionStamina *
                 Time.deltaTime;
 
-            if (staminaActual >
-                staminaMaxima)
+            if (staminaActual > staminaMaxima)
             {
-                staminaActual =
-                    staminaMaxima;
+                staminaActual = staminaMaxima;
             }
         }
     }
 
     // =========================
-    // MOVIMIENTO FÍSICO
+    // MOVIMIENTO FISICO
     // =========================
 
     void FixedUpdate()

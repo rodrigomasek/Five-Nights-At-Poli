@@ -7,8 +7,13 @@ public class TeleportZone : MonoBehaviour
     public Key teclaInteraccion = Key.F;
     public string mensajeInteraccion = "Presioná F para subir";
 
-    [Header("Destino")]
+    [Header("Destino del jugador")]
     public Transform destino;
+
+    [Header("Destino del profesor")]
+    [Tooltip("Punto de llegada del profesor en el otro piso. Debe estar sobre el NavMesh de ese piso.")]
+    public Transform destinoProfesor;
+    public PisoEscuela pisoDestinoProfesor = PisoEscuela.Piso2;
 
     [Header("Interfaz")]
     public InteractionUI interactionUI;
@@ -20,16 +25,13 @@ public class TeleportZone : MonoBehaviour
     void Start()
     {
         if (interactionUI == null)
-        {
             interactionUI = FindFirstObjectByType<InteractionUI>();
-        }
 
         if (destino == null)
-        {
-            Debug.LogError(
-                "No se asignó un destino para: " + gameObject.name
-            );
-        }
+            Debug.LogError("No se asignó un destino para: " + gameObject.name);
+
+        if (destinoProfesor == null)
+            Debug.LogWarning("No se asignó Destino Profesor en: " + gameObject.name);
     }
 
     void Update()
@@ -38,17 +40,13 @@ public class TeleportZone : MonoBehaviour
             return;
 
         if (interactionUI != null)
-        {
             interactionUI.MostrarMensaje(mensajeInteraccion);
-        }
 
         if (Keyboard.current == null)
             return;
 
         if (Keyboard.current[teclaInteraccion].wasPressedThisFrame)
-        {
             TeletransportarJugador();
-        }
     }
 
     void OnTriggerEnter2D(Collider2D other)
@@ -58,7 +56,6 @@ public class TeleportZone : MonoBehaviour
 
         jugador = other.transform;
         rbJugador = other.GetComponent<Rigidbody2D>();
-
         jugadorCerca = true;
     }
 
@@ -72,15 +69,17 @@ public class TeleportZone : MonoBehaviour
         rbJugador = null;
 
         if (interactionUI != null)
-        {
             interactionUI.OcultarMensaje();
-        }
     }
 
     void TeletransportarJugador()
     {
         if (destino == null || jugador == null)
             return;
+
+        // Comprobar la visión ANTES de mover al jugador.
+        EnemyMovement enemigo = FindAnyObjectByType<EnemyMovement>();
+       bool profesorLoVeia = enemigo != null;
 
         if (rbJugador != null)
         {
@@ -94,14 +93,23 @@ public class TeleportZone : MonoBehaviour
 
         Physics2D.SyncTransforms();
 
+        // Informar siempre el piso real del jugador. El profesor solo
+        // comenzará a seguirlo si lo veía justo antes del teletransporte.
+        if (enemigo != null)
+        {
+            enemigo.NotificarCambioPisoJugador(
+                pisoDestinoProfesor,
+                destinoProfesor,
+                profesorLoVeia
+            );
+        }
+
         jugadorCerca = false;
         jugador = null;
         rbJugador = null;
 
         if (interactionUI != null)
-        {
             interactionUI.OcultarMensaje();
-        }
 
         Debug.Log("Jugador teletransportado correctamente.");
     }
